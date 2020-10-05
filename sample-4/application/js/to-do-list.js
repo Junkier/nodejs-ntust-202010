@@ -56,7 +56,7 @@ $(function(){
                     <td>${d.time}</td>
                     <td><a href="/to-do-list/detail/${d.toDoId}">${d.subject}</a></td>
                     <td>
-                        ${(new Array(d.level)).fill(0).map(function(_){ return `<i class="far fa-bell bell-icon"></i>`}).join("\n")}
+                        ${(new Array(d.level)).fill(0).map(function(_){ return `<i class="fas fa-bell bell-icon"></i>`}).join("\n")}
                     </td>
                     <td>${d.author}</td>
                 </tr>`;

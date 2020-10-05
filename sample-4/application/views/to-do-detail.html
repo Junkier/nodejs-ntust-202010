@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
     integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-PMjWzHVtwxdq7m7GIxBot5vdxUY+5aKP9wpKtvnNBZrVv1srI8tU6xvFMzG8crLNcMj/8Xl/WWmo/oAP/40p1g==" crossorigin="anonymous" />
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/css/layout.css" />
 
@@ -21,7 +23,7 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <div class="logo mt-1"> <a href="/">{{ templateName }} 您好 !</a></div>
+                <div class="logo mt-1"> <a href="/welcome">{{ templateName }} 您好 !</a></div>
             </div>
             <div class="sidebar-content">
                 <ul class="list-unstyled components">
@@ -80,29 +82,122 @@
             </div>
             <div class="m-2 p-2" style="overflow-y: scroll">
                 <div class="box-s1">
-                    <h5>{{ toDoId }} 細項</h5>
-                    <h3>GOGOGO !!!</h3>
-
-                    <!-- <div class="form-row mx-1">
-                        <div class="form-group col-md-1">
-                            <button type="button" class="btn btn-success px-4" id="drama-select-btn">新增</button>
+                    
+                    <div class="form-row d-flex justify-content-between border-bottom m-1">
+                        <h3 class="ml-2">{{ toDoId }} 細項</h3>
+                        <div class="form-group col-md-3">
+                            <label class="col-form-label">建立 / 修改 時間 :  
+                                    <u id="de-created-time"></u></label>
                         </div>
+                    </div>
+
+                    <div class="form-row mt-3">
+
+                        <div class="form-group col-md-3 mx-3">
+                            <label class="col-form-label">主題</label>
+                            <input class="form-control" type="text"  />
+                        </div>
+
+                        <div class="form-group col-md-3 mx-3">
+                            <label class="col-form-label" for="birthday">預定時間</label>
+                            <div class="input-group" id="datetimepicker" data-target-input="nearest">
+                                <input type="text" class="form-control datetimepicker-input"
+                                    data-target="#datetimepicker" id="memBirthDay"
+                                    />
+                                <div class="input-group-append" data-target="#datetimepicker"
+                                    data-toggle="datetimepicker">
+                                    <div class="input-group-text btn-light">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3 mx-3">
+                            <label class="col-form-label">簡介 </label>
+                            <input class="form-control" 
+                                oninput="if(value.length>10)value=value.slice(0,10)" 
+                                type="text"  />
+                        </div>
+                        
+                        <div class="form-group col-md-3 mx-3">
+                            <label class="col-form-label">程度</label>
+                            <div id="de-level" style="font-size: 1.5rem;">
+                                <i index=0 class="far fa-bell bell-icon"></i>
+                                <i index=1 class="far fa-bell bell-icon"></i>
+                                <i index=2 class="far fa-bell bell-icon"></i>
+                                <i index=3 class="far fa-bell bell-icon"></i>
+                                <i index=4 class="far fa-bell bell-icon"></i>
+                                <i index=5 class="far fa-bell bell-icon"></i>
+                                <i index=6 class="far fa-bell bell-icon"></i>
+                                <i index=7 class="far fa-bell bell-icon"></i>
+                                <i index=8 class="far fa-bell bell-icon"></i>
+                                <i index=9 class="far fa-bell bell-icon"></i>
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-group col-md-3 mx-3">
+                            <label class="col-form-label">撰寫者</label>
+                            <select class="form-control" id="categories">
+                                <option>傑夫</option>
+                                <option>Leo</option>
+                                <option>小魚</option>
+                                <option>阿麟</option>
+                                <option>老Q</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row border-bottom mx-1">
+                        <div class="form-group col-md-9 mx-2 mb-4">
+                            <label class="col-form-label" >內容</label>
+                            <textarea rows="10" class="form-control" name="mention24" 
+                                id="content"></textarea>
+                        </div>
+                    </div>
+
+
+                    <!-- <div class="form-row">
+                        <div class="form-group col-md-12 mx-3">
+                            <h4>照片們</h4>
+                        </div>
+
+                        <div class="form-group col-md-12 mx-3">
+                            <div class="form-group col-md-3 mx-3">
+                                <img src="/images/qq.png" class="img-thumbnail" >
+                            </div>
+    
+                            <div class="form-group col-md-3 mx-3">
+                                <img src="/images/css.png" class="img-thumbnail" >
+                            </div>
+    
+                            <div class="form-group col-md-3 mx-3">
+                                <img src="/images/a1000113_main.jpg" class="img-thumbnail" >
+                            </div>
+    
+                            <div class="form-group col-md-3 mx-3">
+                                <img src="/images/589173.jpg" class="img-fluid" alt="Responsive image">
+                            </div>
+    
+                            <div class="form-group col-md-3 mx-3">
+                                <img src="/images/212927.jpg" class="img-fluid" alt="Responsive image">
+                            </div>
+
+                        </div>
+                     
                     </div> -->
-                    <!-- <table class="table table-striped col-md-12 mx-2" id="to-do-list-table">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">主題</th>
-                                <th scope="col">時間</th>
-                                <th scope="col">簡介</th>
-                                <th scope="col">程度</th>
-                                <th scope="col">撰寫人</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table> -->
+
+                    <div class="form-row d-flex justify-content-center">
+                        <div class="form-group col-md-4 mx-3 my-4">
+                            <button type="button" style="width:5rem;" class="btn btn-primary mr-4" id="de-save-btn">儲存</button>
+                            <button type="button" style="width:5rem;" class="btn btn-info mr-4"    id="de-cancel-btn">取消</button>
+                            <button type="button" style="width:5rem;" class="btn btn-danger mr-4"  id="de-delete-btn">刪除</button>
+                        </div>
+                    </div>
+                    
                 </div>
+                    
             </div>
         </div>
     </div>
@@ -116,8 +211,18 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
+    <!-- Moment js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js" integrity="sha512-Izh34nqeeR7/nwthfeE0SI3c8uhFSnqxV0sI9TvTcXiFJkMd6fB644O64BRq2P/LA/+7eRvCw4GmLsXksyTHBg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/locale/zh-tw.min.js" integrity="sha512-teZ6dd0iHPCs4aUqFGC1OSUiT+pY6eqk5Jaa2sE7wqExKu3Tscsn1RYbEJWPWsqKYroeJ6jlkR2YdY3Em8eVRQ==" crossorigin="anonymous"></script>
+   
+    <!-- Datetime picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-2JBCbWoMJPH+Uj7Wq5OLub8E5edWHlTM4ar/YJkZh3plwB2INhhOC3eDoqHm1Za/ZOSksrLlURLoyXVdfQXqwg==" crossorigin="anonymous"></script>
+
+
 
     <script type="text/javascript" src="/js/to-do-detail.js"></script>
+
+
 </body>
 
 </html>
