@@ -13,8 +13,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css" integrity="sha512-PMjWzHVtwxdq7m7GIxBot5vdxUY+5aKP9wpKtvnNBZrVv1srI8tU6xvFMzG8crLNcMj/8Xl/WWmo/oAP/40p1g==" crossorigin="anonymous" />
 
+
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="/css/layout.css" />
+    <link rel="stylesheet" href="/css/to-do-detail.css">
+
 
     <title>Node.js 教學</title>
 </head>
@@ -150,7 +156,7 @@
                     </div>
 
                     <div class="form-row border-bottom mx-1">
-                        <div class="form-group col-md-9 mx-2 mb-4">
+                        <div class="form-group col-md-9 mx-2 mb-5">
                             <label class="col-form-label" >內容</label>
                             <textarea rows="10" class="form-control" name="mention24" 
                                 id="content"></textarea>
@@ -158,35 +164,53 @@
                     </div>
 
 
-                    <!-- <div class="form-row">
-                        <div class="form-group col-md-12 mx-3">
-                            <h4>照片們</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-12 mx-3 d-flex">
+                            <h4 class="mt-3">附件照片</h4>
                         </div>
 
-                        <div class="form-group col-md-12 mx-3">
-                            <div class="form-group col-md-3 mx-3">
-                                <img src="/images/qq.png" class="img-thumbnail" >
+                        <div class="form-group col-md-12 mx-3 d-flex">
+                            <div class="form-group col-md-3 mx-3 text-center">
+                                <a data-fancybox="gallery" href="/images/qq.png">
+                                    <img src="/images/qq.png" class="img-thumbnail attach-images">
+                                </a>
                             </div>
     
-                            <div class="form-group col-md-3 mx-3">
-                                <img src="/images/css.png" class="img-thumbnail" >
+                            <div class="form-group col-md-3 mx-3 text-center">
+                                <a data-fancybox="gallery" href="/images/css.png">
+                                    <img src="/images/css.png" class="img-thumbnail attach-images">
+                                </a>
                             </div>
     
-                            <div class="form-group col-md-3 mx-3">
-                                <img src="/images/a1000113_main.jpg" class="img-thumbnail" >
+                            <div class="form-group col-md-3 mx-3 text-center">
+                                <a data-fancybox="gallery" href="/images/a1000113_main.jpg">
+                                    <img src="/images/a1000113_main.jpg" class="img-thumbnail attach-images">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-12 mx-3 d-flex">
+                            <div class="form-group col-md-3 mx-3 text-center">
+                                <a data-fancybox="gallery" href="/images/589173.jpg">
+                                    <img src="/images/589173.jpg" class="img-thumbnail attach-images">
+                                </a>
                             </div>
     
-                            <div class="form-group col-md-3 mx-3">
-                                <img src="/images/589173.jpg" class="img-fluid" alt="Responsive image">
-                            </div>
-    
-                            <div class="form-group col-md-3 mx-3">
-                                <img src="/images/212927.jpg" class="img-fluid" alt="Responsive image">
+                            <div class="form-group col-md-3 mx-3 text-center">
+                                <a data-fancybox="gallery" href="/images/212927.jpg">
+                                    <img src="/images/212927.jpg" class="img-thumbnail attach-images">
+                                </a>
                             </div>
 
+                            <div class="form-group col-md-3 mx-3 text-center">
+                                <img src="/images/plus.png" class="img-thumbnail attach-images">
+                            </div>
+
+                            
                         </div>
+
                      
-                    </div> -->
+                    </div>
 
                     <div class="form-row d-flex justify-content-center">
                         <div class="form-group col-md-4 mx-3 my-4">
@@ -219,7 +243,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js" integrity="sha512-2JBCbWoMJPH+Uj7Wq5OLub8E5edWHlTM4ar/YJkZh3plwB2INhhOC3eDoqHm1Za/ZOSksrLlURLoyXVdfQXqwg==" crossorigin="anonymous"></script>
 
 
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
+    <!-- Fancybox JS -->
     <script type="text/javascript" src="/js/to-do-detail.js"></script>
 
 
