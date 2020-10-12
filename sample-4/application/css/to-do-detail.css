@@ -8,3 +8,20 @@
 .attach-images { 
     height: 200px;
 }
+
+
+.upload-image {
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    height: 200px;
+    cursor: pointer;
+
+}
+
+
+.upload-image i{
+    font-size: 3rem;
+}

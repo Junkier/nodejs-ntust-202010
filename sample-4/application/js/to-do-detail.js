@@ -43,6 +43,91 @@ function init(){
     // Creating time 
     $("#de-created-time").text(moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
 
+    
+    $(".attachments i.fa-plus").click(uploadImageEvent);
+
+
+    $(".attachments input[type='file']").change(function(e){
+
+        e.preventDefault();
+
+        var formData = new FormData();
+        // console.log(e.target.files);
+        formData.append("attachment", e.target.files[0]);
+
+        // var fd = new FormData();
+        // var files = $('#file')[0].files[0];
+        // fd.append('file',files);
+
+       axios({
+            method: 'POST',
+            url: '/to-do-list/testqq',
+            data: formData,
+            // contentType: false,
+            // processData: false,
+            // success: function(response){
+            //     if(response != 0){
+            //         $("#img").attr("src",response); 
+            //         $(".preview img").show(); // Display image element
+            //     }else{
+            //         alert('file not uploaded');
+            //     }
+            // },
+        })
+        .then(function(res){
+            console.log(res);
+        })
+        .catch(function(err){
+            console.log(err);
+        });
+
+
+        // axios({
+           
+        //     data: formData,
+        //     headers: {
+        //     Authorization: "Client-ID " + {{apiKey}} //放置你剛剛申請的Client-ID
+        //     },
+        //     mimeType: 'multipart/form-data'
+        //     }).then(res => {
+        //       console.log(res)
+        //     }).catch(e => {
+        //       console.log(e)
+        //  })
+
+
+        
+        // var formData = new FormData(this);
+
+        // $.ajax({
+        //     type:'POST',
+        //     url: $(this).attr('action'),
+        //     data:formData,
+        //     cache:false,
+        //     contentType: false,
+        //     processData: false,
+        //     success:function(data){
+        //         console.log("success");
+        //         console.log(data);
+        //     },
+        //     error: function(data){
+        //         console.log("error");
+        //         console.log(data);
+        //     }
+        // });
+
+
+
+    });
+
+};
+
+function uploadImageEvent(){
+    var $fileInput = $(this).next("input[type='file']")[0];
+
+    $fileInput.click();
+    // console.log(fileInput);
+
 };
 
 $(function(){
