@@ -169,36 +169,46 @@
                             <h4 class="mt-3">附件照片</h4>
                         </div>
 
-                        <div class="form-group col-md-12 mx-3 d-flex">
-                            <div class="form-group col-md-3 mx-3 text-center">
-                                <a data-fancybox="gallery" href="/images/qq.png">
-                                    <img src="/images/qq.png" class="img-thumbnail attach-images">
-                                </a>
+                        <div class="form-group col-md-12 mx-3 d-flex ml-5" >
+
+                            <div class="form-group col-md-3 mx-3 upload-image" index=0>
+                                {{#if attachments[0]}}
+                                    <a data-fancybox="gallery" href="/images/{{attachments[0]}}">\
+                                      <img src="/images/{{attachments[0]}}" class="img-thumbnail attach-images">\
+                                    </a>
+                                {{else}}
+                                    <i class="fas fa-plus"></i>
+                                    <input type="file" class="d-none" accept="image/*">
+                                {{/if}}
+                            </div>
+
+                            
+    
+                            <div class="form-group col-md-3 mx-3 upload-image" index=1>
+                                <i class="fas fa-plus"></i>
+                                <input type="file" class="d-none" accept="image/*">
                             </div>
     
-                            <div class="form-group col-md-3 mx-3 upload-image">
+                            <div class="form-group col-md-3 mx-3 upload-image" index=2>
                                 <i class="fas fa-plus"></i>
-                            </div>
-    
-                            <div class="form-group col-md-3 mx-3 upload-image">
-                                <i class="fas fa-plus"></i>
+                                <input type="file" class="d-none" accept="image/*">
                             </div>
                         </div>
 
-                        <div class="form-group col-md-12 mx-3 d-flex">
-                            <div class="form-group col-md-3 mx-3 upload-image">
+                        <div class="form-group col-md-12 mx-3 d-flex ml-5" >
+                            <div class="form-group col-md-3 mx-3 upload-image" index=3>
                                 <i class="fas fa-plus"></i>
-                                <input type="file"  style="display: none;">
+                                <input type="file" class="d-none" accept="image/*">
                             </div>
     
-                            <div class="form-group col-md-3 mx-3 upload-image">
+                            <div class="form-group col-md-3 mx-3 upload-image" index=4>
                                 <i class="fas fa-plus"></i>
-                                <input type="file"  style="display: none;">
+                                <input type="file" class="d-none" accept="image/*">
                             </div>
 
-                            <div class="form-group col-md-3 mx-3 upload-image">
+                            <div class="form-group col-md-3 mx-3 upload-image" index=5>
                                 <i class="fas fa-plus"></i>
-                                <input type="file"  style="display: none;" accept="image/*">
+                                <input type="file" class="d-none" accept="image/*">
                             </div>
                             
                         </div>
@@ -219,6 +229,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="to_do_id" value={{ to_do_id }}>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

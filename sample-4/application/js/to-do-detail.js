@@ -1,3 +1,48 @@
+function uploadImageEvent(e){
+
+    if(!$(this).hasClass("upload-image")) return;
+
+    var $fileInput = $(this).find("input[type='file']")[0];
+    $fileInput.click();
+};
+
+function changeImageEvent(e){
+
+    var $this = $(this);
+    var $parent = $this.parents("div.upload-image");
+    var index    = $parent.attr("index");
+
+    e.preventDefault();
+
+    var formData = new FormData();
+
+    formData.append("attachment", e.target.files[0]);
+
+    axios({
+        method : 'POST',
+        url    : '/to-do-list/images?to_do_id='+$("input#to_do_id").val() + '&index='+index,
+        data   : formData,
+    })
+    .then(function(res){
+        
+        var imgUrl  = res.data.fileName;
+
+
+        $parent.html('<a data-fancybox="gallery" href="/images/'+imgUrl+'">\
+            <img src="/images/'+imgUrl+'" class="img-thumbnail attach-images">\
+         </a>\
+        ');
+
+        $parent.removeClass("upload-image");
+        $parent.addClass("text-center");
+        
+    })
+    .catch(function(err){
+        console.log(err);
+    });
+
+};
+
 function init(){
 
     //// Sidebar Sliding
@@ -46,29 +91,43 @@ function init(){
 
     // Make button clickable using event delegation
     $('body').on('click', '[data-fancybox-delete]', function() {
-        console.log($(this));
-        // axios({
-        //     method : 'POST',
-        //     url    : '/to-do-list/images',
-        //     data   : formData,
-        // })
-        // .then(function(res){
-        //     var $parent = $this.parents("div.upload-image");
-        //     var imgUrl  = res.data.fileName;
+        
+        var ele       = $.fancybox.getInstance().current;
+        var $img      = $(ele.$thumb[0]);
+        var $parent   = $img.parents("div.text-center");
+        var index     = $parent.attr("index");
+        var to_do_id  = $("input#to_do_id").val();
 
+        var src     = ele.src;
 
-        //     $parent.html('<a data-fancybox="gallery" href="/images/'+imgUrl+'">\
-        //         <img src="/images/'+imgUrl+'" class="img-thumbnail attach-images">\
-        //      </a>\
-        //     ');
+        
+        axios({
+            method : 'DELETE',
+            url    : '/to-do-list/images',
+            data   : {
+                to_do_id : to_do_id , 
+                src ,
+                index , 
+            },
+        })
+        .then(function(_){
 
-        //     $parent.removeClass("upload-image");
-        //     $parent.addClass("text-center");
+            $parent.html('<i class="fas fa-plus"></i><input type="file"  style="display: none;">');
+
+            $parent.removeClass("text-center");
+            $parent.addClass("upload-image");
+
+            $(".attachments div.upload-image").off("click");
+            $(".attachments div.upload-image").click(uploadImageEvent);
+
+            $(".attachments input[type='file']").off("change");
+            $(".attachments input[type='file']").change(changeImageEvent);
+           
             
-        // })
-        // .catch(function(err){
-        //     console.log(err);
-        // });
+        })
+        .catch(function(err){
+            console.log(err);
+        });
         
     });
 
@@ -93,55 +152,15 @@ function init(){
 
     
     //// Attachments upload images
-    $(".attachments i.fa-plus").click(uploadImageEvent);
+    $(".attachments div.upload-image").click(uploadImageEvent);
 
-
+    
     // Displaying image
-    $(".attachments input[type='file']").change(function(e){
-
-        var $this = $(this);
-
-        e.preventDefault();
-
-        var formData = new FormData();
-
-        formData.append("attachment", e.target.files[0]);
-
-
-        axios({
-            method : 'POST',
-            url    : '/to-do-list/images',
-            data   : formData,
-        })
-        .then(function(res){
-            var $parent = $this.parents("div.upload-image");
-            var imgUrl  = res.data.fileName;
-
-
-            $parent.html('<a data-fancybox="gallery" href="/images/'+imgUrl+'">\
-                <img src="/images/'+imgUrl+'" class="img-thumbnail attach-images">\
-             </a>\
-            ');
-
-            $parent.removeClass("upload-image");
-            $parent.addClass("text-center");
-            
-        })
-        .catch(function(err){
-            console.log(err);
-        });
-
-    });
+    $(".attachments input[type='file']").change(changeImageEvent);
 
 };
 
 
-function uploadImageEvent(){
-    var $fileInput = $(this).next("input[type='file']")[0];
-
-    $fileInput.click();
-
-};
 
 
 $(function(){
