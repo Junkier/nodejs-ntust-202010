@@ -1,3 +1,4 @@
 module.exports = {
-    dramas : require("./dramas"),
+    toDoList : require("./to-do-list"),
+    members  : require("./members"),
 };

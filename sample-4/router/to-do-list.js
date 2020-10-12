@@ -1,4 +1,8 @@
 const express = require("express");
+const uuid    = require('uuid/v1');
+const moment  = require("moment");
+
+const model   = require("../models");
 
 var router = express.Router();
 
@@ -11,6 +15,12 @@ const multer = Multer({
     }
 });
 
+let isFileExist = (req,res,next)=>{
+    if(!req.file) res.status(400).json({message:"Lacking of image files."});
+    else next();
+};
+
+
 
 router.get("/page",
     (req,res)=>{
@@ -21,26 +31,44 @@ router.get("/page",
 );
 
 
-router.get("/detail/:toDoId",
-    (req,res)=>{
+router.get("/detail/:to_do_id",
+    async (req,res)=>{
+        let data = await model.toDoList.findOne({to_do_id : req.params.to_do_id});
+        // console.log(data);
         res.render("to-do-detail.html",{ 
             templateName : req.session.userInfo.name ,
-            toDoId : req.params.toDoId ,
+            to_do_id     : req.params.to_do_id ,
         });
     }
 );
 
 
-router.post("/testqq",
+router.post("/images",
     multer.single("attachment"),
+    isFileExist,
     async (req,res)=>{
+
+        // [Code Review]
+        // 1. file download 
+        // 2. create fileName 
+        // 3. insert to mongoDB 
+
         // GOGO multer
 
+        let randomFactor = uuid().replace(/-/g,"");
+        let fileType     = req.file.mimetype.match(/^(image|application)\/(.*)/)[2];
+
+        let fileName     = `${randomFactor}.${fileType}`;
+
         // GOGO write file !!!
-        // let result = await fs.writeFileSync(`sample-4/application/images/`)
-        console.log(req.file);
-        res.json({message:"ok"})
-    }
+        await fs.writeFileSync(`sample-4/application/images/${fileName}`,req.file.buffer);
+
+        res.json({message:"ok",fileName});
+
+        // next();
+    },
+    // [Code Review]
+    // insert into mongoDB
 );
 
 

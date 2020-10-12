@@ -1,31 +1,79 @@
 function init(){
 
+    //// Sidebar Sliding
     $("#sidebarCollapse").on("click", function () {
         $("#sidebar, #content").toggleClass("active");
         $(".collapse.in").toggleClass("in");
         $("a[aria-expanded=true]").attr("aria-expanded", "false");
     });
 
-    // Init datetime picker icon.
+
+    //// Init datetime picker icon.
     $.fn.datetimepicker.Constructor.Default = $.extend({},
         $.fn.datetimepicker.Constructor.Default,
-        { icons:
-                { time: 'fas fa-clock',
-                    date: 'fas fa-calendar',
-                    up: 'fas fa-arrow-up',
-                    down: 'fas fa-arrow-down',
-                    previous: 'fas fa-arrow-circle-left',
-                    next: 'fas fa-arrow-circle-right',
-                    today: 'far fa-calendar-check-o',
-                    clear: 'fas fa-trash',
-                    close: 'far fa-times' } });
+        { 
+            icons: { 
+                time: 'fas fa-clock',
+                date: 'fas fa-calendar',
+                up: 'fas fa-arrow-up',
+                down: 'fas fa-arrow-down',
+                previous: 'fas fa-arrow-circle-left',
+                next: 'fas fa-arrow-circle-right',
+                today: 'far fa-calendar-check-o',
+                clear: 'fas fa-trash',
+                close: 'far fa-times' 
+            },
+        }
+        
+    );
 
     $("#datetimepicker").datetimepicker({
         format: "YYYY-MM-DD HH:mm",
     });
 
 
-    // Level signal
+
+    //// Customized fancybox
+    $.fancybox.defaults.btnTpl.delete = '<button data-fancybox-delete class="fancybox-button fancybox-button--delete" title="title of the icon"><i class="fas fa-trash-alt"></i></button>';
+
+    $.fancybox.defaults.buttons = [
+        "zoom",
+        "thumbs",
+        "delete",
+        "close"
+    ];
+
+
+    // Make button clickable using event delegation
+    $('body').on('click', '[data-fancybox-delete]', function() {
+        console.log($(this));
+        // axios({
+        //     method : 'POST',
+        //     url    : '/to-do-list/images',
+        //     data   : formData,
+        // })
+        // .then(function(res){
+        //     var $parent = $this.parents("div.upload-image");
+        //     var imgUrl  = res.data.fileName;
+
+
+        //     $parent.html('<a data-fancybox="gallery" href="/images/'+imgUrl+'">\
+        //         <img src="/images/'+imgUrl+'" class="img-thumbnail attach-images">\
+        //      </a>\
+        //     ');
+
+        //     $parent.removeClass("upload-image");
+        //     $parent.addClass("text-center");
+            
+        // })
+        // .catch(function(err){
+        //     console.log(err);
+        // });
+        
+    });
+
+
+    //// Level signal
     var level = 0;
     $("#de-level i").click(function(){
 
@@ -40,95 +88,61 @@ function init(){
     });
 
 
-    // Creating time 
+    //// Creating time 
     $("#de-created-time").text(moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
 
     
+    //// Attachments upload images
     $(".attachments i.fa-plus").click(uploadImageEvent);
 
 
+    // Displaying image
     $(".attachments input[type='file']").change(function(e){
+
+        var $this = $(this);
 
         e.preventDefault();
 
         var formData = new FormData();
-        // console.log(e.target.files);
+
         formData.append("attachment", e.target.files[0]);
 
-        // var fd = new FormData();
-        // var files = $('#file')[0].files[0];
-        // fd.append('file',files);
 
-       axios({
-            method: 'POST',
-            url: '/to-do-list/testqq',
-            data: formData,
-            // contentType: false,
-            // processData: false,
-            // success: function(response){
-            //     if(response != 0){
-            //         $("#img").attr("src",response); 
-            //         $(".preview img").show(); // Display image element
-            //     }else{
-            //         alert('file not uploaded');
-            //     }
-            // },
+        axios({
+            method : 'POST',
+            url    : '/to-do-list/images',
+            data   : formData,
         })
         .then(function(res){
-            console.log(res);
+            var $parent = $this.parents("div.upload-image");
+            var imgUrl  = res.data.fileName;
+
+
+            $parent.html('<a data-fancybox="gallery" href="/images/'+imgUrl+'">\
+                <img src="/images/'+imgUrl+'" class="img-thumbnail attach-images">\
+             </a>\
+            ');
+
+            $parent.removeClass("upload-image");
+            $parent.addClass("text-center");
+            
         })
         .catch(function(err){
             console.log(err);
         });
 
-
-        // axios({
-           
-        //     data: formData,
-        //     headers: {
-        //     Authorization: "Client-ID " + {{apiKey}} //放置你剛剛申請的Client-ID
-        //     },
-        //     mimeType: 'multipart/form-data'
-        //     }).then(res => {
-        //       console.log(res)
-        //     }).catch(e => {
-        //       console.log(e)
-        //  })
-
-
-        
-        // var formData = new FormData(this);
-
-        // $.ajax({
-        //     type:'POST',
-        //     url: $(this).attr('action'),
-        //     data:formData,
-        //     cache:false,
-        //     contentType: false,
-        //     processData: false,
-        //     success:function(data){
-        //         console.log("success");
-        //         console.log(data);
-        //     },
-        //     error: function(data){
-        //         console.log("error");
-        //         console.log(data);
-        //     }
-        // });
-
-
-
     });
 
 };
+
 
 function uploadImageEvent(){
     var $fileInput = $(this).next("input[type='file']")[0];
 
     $fileInput.click();
-    // console.log(fileInput);
 
 };
+
 
 $(function(){
 
