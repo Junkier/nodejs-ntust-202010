@@ -20,7 +20,7 @@ function changeImageEvent(e){
 
     axios({
         method : 'POST',
-        url    : '/to-do-list/images?to_do_id='+$("input#to_do_id").val() + '&index='+index,
+        url    : '/images?to_do_id='+$("input#to_do_id").val() + '&index='+index,
         data   : formData,
     })
     .then(function(res){
@@ -103,7 +103,7 @@ function init(){
         
         axios({
             method : 'DELETE',
-            url    : '/to-do-list/images',
+            url    : '/images',
             data   : {
                 to_do_id : to_do_id , 
                 src ,
@@ -122,6 +122,8 @@ function init(){
 
             $(".attachments input[type='file']").off("change");
             $(".attachments input[type='file']").change(changeImageEvent);
+
+            $.fancybox.close();
            
             
         })

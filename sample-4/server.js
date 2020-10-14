@@ -15,8 +15,13 @@ const bodyParser   = require("body-parser");
 
 const dramas   = require("./router/dramas");
 const toDoList = require("./router/to-do-list");
+const images   = require("./router/images");
 
 const utils    = require("./utils");
+
+
+hbs.registerHelper("inc3",(value, options) => parseInt(value) + 3);
+
 
 // 設定模板引擎
 app.engine('html',hbs.__express);
@@ -77,6 +82,7 @@ app.use(utils.isUserLogined);
 
 app.use("/dramas",dramas);
 app.use("/to-do-list",toDoList);
+app.use("/images",images);
 
 
 app.get("/welcome",
