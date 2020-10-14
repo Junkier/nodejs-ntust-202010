@@ -20,7 +20,7 @@ function changeImageEvent(e){
 
     axios({
         method : 'POST',
-        url    : '/images?to_do_id='+$("input#to_do_id").val() + '&index='+index,
+        url    : '/images?to_do_id='+$("input#to-do-id").val() + '&index='+index,
         data   : formData,
     })
     .then(function(res){
@@ -96,7 +96,7 @@ function init(){
         var $img      = $(ele.$thumb[0]);
         var $parent   = $img.parents("div.text-center");
         var index     = $parent.attr("index");
-        var to_do_id  = $("input#to_do_id").val();
+        var to_do_id  = $("input#to-do-id").val();
 
         var src     = ele.src;
 

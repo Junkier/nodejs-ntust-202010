@@ -54,7 +54,7 @@ $(function(){
                     <th scope="row">${i+1}</th>
                     <td>${d.title}</td>
                     <td>${d.time}</td>
-                    <td><a href="/to-do-list/detail/${d.toDoId}">${d.subject}</a></td>
+                    <td><a href="/to-do-list/detail/edit/${d.toDoId}">${d.subject}</a></td>
                     <td>
                         ${(new Array(d.level)).fill(0).map(function(_){ return `<i class="fas fa-bell bell-icon"></i>`}).join("\n")}
                     </td>

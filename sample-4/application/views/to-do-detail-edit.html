@@ -90,7 +90,7 @@
                 <div class="box-s1">
                     
                     <div class="form-row d-flex justify-content-between border-bottom m-1">
-                        <h3 class="ml-2">{{ toDoId }} 細項</h3>
+                        <h3 class="ml-2" id="title-to-do-id">{{ to_do_id }} 細項</h3>
                         <div class="form-group col-md-3">
                             <label class="col-form-label">建立 / 修改 時間 :  
                                     <u id="de-created-time"></u></label>
@@ -215,7 +215,7 @@
             </div>
         </div>
     </div>
-    <input type="hidden" id="to_do_id" value={{ to_do_id }}>
+    <input type="hidden" id="to-do-id" value={{ to_do_id }}>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -240,8 +240,9 @@
 
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
-    <!-- Fancybox JS -->
-    <script type="text/javascript" src="/js/to-do-detail.js"></script>
+    
+    <script type="text/javascript" src="/js/utils.js"></script>
+    <script type="text/javascript" src="/js/to-do-detail-edit.js"></script>
 
 
 </body>

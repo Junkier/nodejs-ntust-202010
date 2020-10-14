@@ -13,7 +13,10 @@ let toDoListSchema = new mongoose.Schema({
     "content"         : String,
     "level"           : Number,
     "attachments"     : Array,
-  }, { collection: "to-do-list"}
+  }, { 
+    collection: "to-do-list",
+    versionKey: false
+  }
 );
   
 
