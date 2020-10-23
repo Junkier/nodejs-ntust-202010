@@ -1,13 +1,9 @@
 ## This is for ntust-nodejs-tutorial 
 
-- sample1
-  ### Basic tutorial
+- sample1 - Views (hbs / front-end)
 
-- sample2
-  ### cookie & session
+- sample2 - Controller ( middleware / cookie & session)
 
-- sample3
-  ### Models & MongoDB 
+- sample3 - Model (models / MongoDB)
 
-- sample4
-  ### to-do-list system
+- sample4 - to.do.list system (implementation)
