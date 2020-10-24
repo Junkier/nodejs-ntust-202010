@@ -12,14 +12,22 @@
 
 const express = require("express");
 
-const app     = express();
+const app      = express();
+// const app1     = express();
+// const app2     = express();
+// const app3     = express();
+
 
 
 app.get("/", function(request,response){
-    response.send("TestQQQQ");
+    response.send("Hello World!");
+});
+
+app.get("/test",function(req,res){
+    res.send("This is test page.");
 });
 
 // port
 app.listen(8088,function(){
-    console.log("Server is running at localhost:" + String(8088));
+    console.log("Server is running at http://localhost:" + String(8088));
 });
