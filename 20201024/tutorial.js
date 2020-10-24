@@ -37,7 +37,7 @@ let time = new Date();
 let arr2 = ["test",2.345, true , time];
 
 // console.log(arr);
-console.log(arr2);
+// console.log(arr2);
 
 // Object
 // let obj1 = {
@@ -57,7 +57,7 @@ let obj2 = {
 };
 
 // console.log(obj1);
-console.log(obj2);
+// console.log(obj2);
 
 
 /////////////////////////////
@@ -95,6 +95,16 @@ let arr3 = [2,3,5,"test",false, {name : "QQ"} ];
 
 let x = arr3[3];
 let y = arr3[5];
+let z = arr3[100];
 
 console.log(x);
 console.log(y);
+console.log(z);
+
+arr3[2] = 1200;
+arr3[4] = true;
+// arr3[10] = "Hello";
+
+console.log(arr3);
+console.log(arr3.length);
+
