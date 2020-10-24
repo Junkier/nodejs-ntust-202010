@@ -94,12 +94,10 @@ app.get("/response-data",(req,res) => {
     // res.send("ok");
 
     
-
     // res.redirect
     // res.redirect("/test");
     res.redirect("https://google.com.tw");
 
-    
 
 });
 
