@@ -108,3 +108,31 @@ arr3[4] = true;
 console.log(arr3);
 console.log(arr3.length);
 
+////////////////////////////////////////////////
+let obj3 = {
+    name   : "jeff",
+    age    : 18,
+    scores : [95,100,85]
+};
+
+let w = obj3["name"];
+let q = obj3["age"];
+// let m = obj3["testQQQQ"];
+
+console.log("Name :" , w);
+console.log("Age  :" , q);
+
+// console.log(m);
+
+obj3["messages"] = "Hello ~~~";
+obj3["now"]      = new Date();
+
+obj3["name"]     = "Keven!!!";
+
+
+
+console.log(obj3);
+
+// [95,100,85]
+// console.log(obj3["scores"])
+console.log(obj3["scores"][1]);
