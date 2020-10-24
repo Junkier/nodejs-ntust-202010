@@ -91,22 +91,22 @@ let obj2 = {
 
 
 ////////////////////////////////////////////////
-let arr3 = [2,3,5,"test",false, {name : "QQ"} ];
+// let arr3 = [2,3,5,"test",false, {name : "QQ"} ];
 
-let x = arr3[3];
-let y = arr3[5];
-let z = arr3[100];
+// let x = arr3[3];
+// let y = arr3[5];
+// let z = arr3[100];
 
-console.log(x);
-console.log(y);
-console.log(z);
+// console.log(x);
+// console.log(y);
+// console.log(z);
 
-arr3[2] = 1200;
-arr3[4] = true;
+// arr3[2] = 1200;
+// arr3[4] = true;
 // arr3[10] = "Hello";
 
-console.log(arr3);
-console.log(arr3.length);
+// console.log(arr3);
+// console.log(arr3.length);
 
 ////////////////////////////////////////////////
 let obj3 = {
@@ -137,6 +137,8 @@ console.log(obj3);
 // console.log(obj3["scores"])
 console.log(obj3["scores"][1]);
 
+let keys = Object.keys(obj3);
+let values = Object.values(obj3);
 
-console.log(Object.keys(obj3));
-console.log(Object.values(obj3));
+console.log(keys);
+console.log(values);
