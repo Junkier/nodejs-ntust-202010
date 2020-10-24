@@ -23,12 +23,17 @@ app.get("/", function(request,response){
     response.send("Hello World!");
 });
 
-app.get("/abcd",function(req,res){
-    res.send("This is abcd page.");
+app.get("/test",function(req,res){
+    res.send("This is test page.");
 });
 
+app.get("/this-is-a-book",(req,res)=>{
+    res.send("This is a book ~~~~");
+});
+
+
 // port
-let portNum = 12345;
+let portNum = 8088;
 app.listen(portNum,function(){
     console.log("Server is running at http://localhost:" + String(portNum));
 });
