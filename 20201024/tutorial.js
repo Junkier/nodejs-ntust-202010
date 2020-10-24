@@ -136,3 +136,7 @@ console.log(obj3);
 // [95,100,85]
 // console.log(obj3["scores"])
 console.log(obj3["scores"][1]);
+
+
+console.log(Object.keys(obj3));
+console.log(Object.values(obj3));
