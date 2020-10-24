@@ -1,16 +1,30 @@
-console.log("Hello world!");
+// console.log("Hello world!");
 
-var a = 12;
+// var a = 12;
 
-// constant --> 常數
-const b = true;
+// // constant --> 常數
+// const b = true;
 
-let c = "abcd";
+// let c = "abcd";
 
-console.log(a);
-console.log(b);
-console.log(c);
+// console.log(a);
+// console.log(b);
+// console.log(c);
 
 
 ////////////////////////////////////////////////
+// Arrow function 
+// var multiple = function(a,b){
+//     return a*b;
+// };
+var multiple = (a,b)   => a*b;
+var add      = (a,b,c) => a+b+c;
+
+
+var result  = multiple(3,17);
+var result2 = add(3,5,10);
+
+console.log(result);
+console.log(result2);
+
 

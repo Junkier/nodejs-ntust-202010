@@ -23,8 +23,8 @@ app.get("/", function(request,response){
     response.send("Hello World!");
 });
 
-app.get("/test",function(req,res){
-    res.send("This is test page.");
+app.get("/abcd",function(req,res){
+    res.send("This is abcd page.");
 });
 
 // port
