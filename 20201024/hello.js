@@ -10,6 +10,7 @@
 
 ////////////////////////////////////////////////////////
 
+// Require module
 const express = require("express");
 const path    = require("path");
 
@@ -19,7 +20,7 @@ const app      = express();
 // const app3     = express();
 
 
-
+// Setting End-point 
 app.get("/", function(request,response){
     response.send("Hello World!");
    // response.json("Hello World!");
@@ -33,6 +34,13 @@ app.get("/this-is-a-book",(req,res)=>{
     res.send("This is a book ~~~~");
 });
 
+
+// User parameters
+// 1. req.query 
+// 2. req.params
+// 3. req.body (future)
+
+// Using query_string 
 app.get("/books/100031",(req,res)=>{
     let payload = req.query;
     let name    = req.query.name;
@@ -45,6 +53,7 @@ app.get("/books/100031",(req,res)=>{
     // res.send("Books end-point");
 });
 
+// Using params 
 app.get("/dep/:depNo/memebers/:memNo",(req,res)=>{
     let depNo   = req.params.depNo;
     let memNo   = req.params.memNo;
@@ -58,6 +67,9 @@ app.get("/dep/:depNo/memebers/:memNo",(req,res)=>{
     res.json("QQ");
 });
 
+
+
+// response data type
 app.get("/response-data",(req,res) => {
     
     //// res.send
