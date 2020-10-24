@@ -33,9 +33,26 @@ app.get("/this-is-a-book",(req,res)=>{
 
 app.get("/books/100031",(req,res)=>{
     let payload = req.query;
-    console.log(payload);
-    res.send(payload);
+    let name    = req.query.name;
+
+    res.send("Hello " + name + "! This is books 100031");
+
+    // console.log(payload);
+
+    // res.send(payload);
     // res.send("Books end-point");
+});
+
+app.get("/dep/:depNo/memebers/:memNo",(req,res)=>{
+    let depNo = req.params.depNo;
+    let memNo = req.params.memNo;
+    let params = req.params;
+    let payload = req.query;
+
+    console.log(payload);
+    console.log(params);
+
+    res.send("Hello ! Your number is depNo :" + depNo + ", memNo :" + memNo);
 });
 
 
