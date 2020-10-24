@@ -28,6 +28,7 @@ app.get("/abcd",function(req,res){
 });
 
 // port
-app.listen(8088,function(){
-    console.log("Server is running at http://localhost:" + String(8088));
+let portNum = 12345;
+app.listen(portNum,function(){
+    console.log("Server is running at http://localhost:" + String(portNum));
 });

@@ -28,3 +28,17 @@ console.log(result);
 console.log(result2);
 
 
+////////////////////////////////////////////////
+// 原生 function
+// var sayHello = function(name){  
+//     return  ( "Hello "+ name + "!" )  
+// };
+
+// Arrow function
+var sayHello = (name) => {
+    console.log("HiHi!!");
+    console.log("This is sayHello function.");
+    return ( "Hello "+ name + "!" );
+};
+
+console.log( sayHello("Leo") );
