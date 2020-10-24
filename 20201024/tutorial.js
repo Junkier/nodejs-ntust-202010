@@ -62,30 +62,39 @@ console.log(obj2);
 
 /////////////////////////////
 // null
-let c = null;
-console.log(c);
+// let c = null;
+// console.log(c);
 
 // undefined
-let d ;
-console.log(d);
+//// let d ;
+// console.log(d);
 
 // typeof 
-let a = 12;
-let b = 20.6;
-let str2 = 'Second string ~~~';
-let name = "Jeff";
+// let a = 12;
+// let b = 20.6;
+// let str2 = 'Second string ~~~';
+// let name = "Jeff";
 
-let arr  = [1,2,3,4,5];
-let obj1 = {
-    name  : "Jeff",
-    age   : 18,
-    "key" : [1,2,3]
+// let arr  = [1,2,3,4,5];
+// let obj1 = {
+//     name  : "Jeff",
+//     age   : 18,
+//     "key" : [1,2,3]
+// };
+// console.log(typeof a);
+// console.log(typeof b);
+// console.log(typeof str2);
+// console.log(typeof name);
 
-};
-console.log(typeof a);
-console.log(typeof b);
-console.log(typeof str2);
-console.log(typeof name);
+// console.log(typeof arr);
+// console.log(typeof obj1);
 
-console.log(typeof arr);
-console.log(typeof obj1);
+
+////////////////////////////////////////////////
+let arr3 = [2,3,5,"test",false, {name : "QQ"} ];
+
+let x = arr3[3];
+let y = arr3[5];
+
+console.log(x);
+console.log(y);
