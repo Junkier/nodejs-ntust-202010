@@ -26,3 +26,6 @@
 // Date
 let time = new Date();
 console.log(time);
+console.log(time.getDate());
+console.log(time.now());
+console.log(time.getMonth());
