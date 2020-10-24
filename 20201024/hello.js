@@ -59,17 +59,19 @@ app.get("/dep/:depNo/memebers/:memNo",(req,res)=>{
 
 
 app.get("/response-data",(req,res) => {
+    
+    //// res.send
     // res.send("This is response data page.");
 
 
-    
-    let data = {
-        "name":"jeff",
-        "age" : 18
-    };
+    //// res.json
+    // let data = {
+    //     "name":"jeff",
+    //     "age" : 18
+    // };
 
     // res.json(data);
-    // res.send(data);
+    // res.send(data);ｃｃｃ
     res.send([1,2,3,4,5]);
 
 
