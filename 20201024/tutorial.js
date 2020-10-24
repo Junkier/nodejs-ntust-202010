@@ -25,7 +25,36 @@
 
 // Date
 let time = new Date();
-console.log(time);
-console.log(time.getDate());
-console.log(time.now());
-console.log(time.getMonth());
+// console.log(time);
+// console.log(time.getFullYear);
+// console.log( time.getFullYear() );
+// console.log( time.toLocaleDateString() );
+// console.log( time.getMinutes() );
+
+
+// Array 
+let arr  = [1,2,3,4,5];
+let arr2 = ["test",2.345, true , time];
+
+console.log(arr);
+console.log(arr2);
+
+// Object
+let obj1 = {
+    name  : "Jeff",
+    age   : 18,
+    "key" : [1,2,3]
+};
+
+let obj2 = {
+    name : 'jeff',
+    age  : 18,
+    others : {
+        message1 : "test",
+        message2 : "hello ~~~"
+    },
+    items : [3,5,7, { test: "this is obj"} ]
+};
+
+console.log(obj1);
+console.log(obj2);
