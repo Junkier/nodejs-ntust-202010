@@ -11,6 +11,7 @@
 ////////////////////////////////////////////////////////
 
 const express = require("express");
+const path    = require("path");
 
 const app      = express();
 // const app1     = express();
@@ -21,7 +22,7 @@ const app      = express();
 
 app.get("/", function(request,response){
     response.send("Hello World!");
-    // response.json("Hello World!");
+   // response.json("Hello World!");
 });
 
 app.get("/test",function(req,res){
@@ -57,7 +58,6 @@ app.get("/dep/:depNo/memebers/:memNo",(req,res)=>{
     res.json("QQ");
 });
 
-
 app.get("/response-data",(req,res) => {
     
     //// res.send
@@ -71,10 +71,23 @@ app.get("/response-data",(req,res) => {
     // };
 
     // res.json(data);
-    // res.send(data);ｃｃｃ
-    res.send([1,2,3,4,5]);
+    // res.send(data);
+    // res.send([1,2,3,4,5]);
 
+   
+    // res.sendFile 
+    // let fileName = path.join(__dirname,"sample.png");
+    // console.log(fileName);
+    // res.sendFile(fileName);
+    // res.send("ok");
 
+    
+
+    // res.redirect
+    // res.redirect("/test");
+    res.redirect("https://google.com.tw");
+
+    
 
 });
 
