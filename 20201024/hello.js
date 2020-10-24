@@ -31,6 +31,13 @@ app.get("/this-is-a-book",(req,res)=>{
     res.send("This is a book ~~~~");
 });
 
+app.get("/books/100031",(req,res)=>{
+    let payload = req.query;
+    console.log(payload);
+    res.send(payload);
+    // res.send("Books end-point");
+});
+
 
 // port
 let portNum = 8088;
