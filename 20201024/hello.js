@@ -44,15 +44,16 @@ app.get("/books/100031",(req,res)=>{
 });
 
 app.get("/dep/:depNo/memebers/:memNo",(req,res)=>{
-    let depNo = req.params.depNo;
-    let memNo = req.params.memNo;
-    let params = req.params;
+    let depNo   = req.params.depNo;
+    let memNo   = req.params.memNo;
+    let params  = req.params;
     let payload = req.query;
 
     console.log(payload);
     console.log(params);
 
-    res.send("Hello ! Your number is depNo :" + depNo + ", memNo :" + memNo);
+    // res.send("Hello ! Your number is depNo :" + depNo + ", memNo :" + memNo);
+    res.json("QQ");
 });
 
 
