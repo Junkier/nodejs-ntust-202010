@@ -21,6 +21,7 @@ const app      = express();
 
 app.get("/", function(request,response){
     response.send("Hello World!");
+    // response.json("Hello World!");
 });
 
 app.get("/test",function(req,res){
@@ -54,6 +55,25 @@ app.get("/dep/:depNo/memebers/:memNo",(req,res)=>{
 
     // res.send("Hello ! Your number is depNo :" + depNo + ", memNo :" + memNo);
     res.json("QQ");
+});
+
+
+app.get("/response-data",(req,res) => {
+    // res.send("This is response data page.");
+
+
+    
+    let data = {
+        "name":"jeff",
+        "age" : 18
+    };
+
+    // res.json(data);
+    // res.send(data);
+    res.send([1,2,3,4,5]);
+
+
+
 });
 
 
