@@ -11,4 +11,15 @@
 ////////////////////////////////////////////////////////
 
 const express = require("express");
-console.log(express);
+
+const app     = express();
+
+
+app.get("/", function(request,response){
+    response.send("TestQQQQ");
+});
+
+// port
+app.listen(8088,function(){
+    console.log("Server is running at localhost:" + String(8088));
+});
