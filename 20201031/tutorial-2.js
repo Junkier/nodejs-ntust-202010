@@ -153,35 +153,47 @@ console.log("-".repeat(50));
 let getRandomNumber = () => Math.floor( Math.random()*49 )+1 ;
 let arr5 = [];
 
-// for(let i=0 ; i<6 ; i++){
-//     let num =  getRandomNumber();
-//     arr5.push(num);
-// };
+for(let i=0 ; i<1000 ; i++){
+    let num =  getRandomNumber();
 
-
-
-// const pets = ['cat', 'dog', 'bat'];
-
-// console.log(pets.includes('cat'));
-// expected output: true
-let cnt5 = 0;
-
-while(true){
-
-    let num = getRandomNumber();
-
-    // num 不在 arr5 裡的話 , 再放入 arr5 中
     if(!arr5.includes(num)){
         arr5.push(num);
     };
 
-    // arr5 長度達6個 , 離開 while loop
-    if(arr5.length === 10){
+    if(arr5.length ===6){
         break;
     }
-    console.log("第" + cnt5 + "次執行");
-    cnt5 +=1;
+    // arr5.push(num);
 };
+
+
+
+// let cnt5 = 0;
+
+// while(true){
+
+//     let num = getRandomNumber();
+
+//     // num 不在 arr5 裡的話 , 再放入 arr5 中
+//     if(!arr5.includes(num)){
+//         arr5.push(num);
+//     };
+
+//     // arr5 長度達6個 , 離開 while loop
+//     if(arr5.length === 10){
+//         break;
+//     }
+//     console.log("第" + cnt5 + "次執行");
+//     cnt5 +=1;
+// };
+
+
+// {
+//     "a" : 1,
+//     "b" : 3,
+//     "c" : 5,
+//     "d" : 8
+// }
 
 
 
