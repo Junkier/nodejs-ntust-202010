@@ -55,3 +55,32 @@ console.log("Sum :",sum);
 for(let ele of arr4){
     console.log(ele);
 };
+
+console.log("-".repeat(50));
+
+////////////////////////////////////////////////////////////////
+//// 小試身手
+
+// 計算 1+2+3+…+100 之總和
+let sum2 = 0;
+let limit = 11;
+
+for(let i =1 ; i<limit ; i++){
+    // sum2 = sum2 + i;
+    sum2 += i ;
+};
+console.log("Sum2 :",sum2);
+
+
+// 試撰寫一程式 , 列印出以下圖形  (repeat)
+for(let i = 6 ; i>0 ; i--){
+    console.log("*".repeat(i));
+};
+
+// 有一變數 name="Jack!" , 試撰寫一程式 , 列印出下列訊息
+let name2 = "Jack!";
+
+for(let i = 0 ; i < name2.length ; i++){
+    // console.log(i,name2[i]);
+    console.log(name2[i].repeat(5-i));
+};
