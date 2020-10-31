@@ -157,7 +157,7 @@ let sayHello = (name) => {
 sayHello("Jeff");
 
 
-console.log(result6);
+// console.log(result6);
 
 
 // let arrMapSample = [
@@ -169,14 +169,46 @@ console.log(result6);
 //     { name : "Elle"  , age : 31 , scores : [100,73,83] },
 // ];
 
+// let result7 = arrMapSample.map(ele => ele["name"]);
+
 let result7 = arrMapSample.map(ele => {
     let name = ele["name"];
     console.log("Hello " + name + "!!!");
-    let num  = 123 ;
-    return num
+    // let num  = 123 ;
+    return name
 });
 
 console.log("result7 :",result7);
 
-
+console.log("-".repeat(50));
 ////////////////////////////////////////////////////////////////
+
+let test1 = ()=>{
+    let value1 = 12;
+    return value1;
+};
+
+let test2 = ()=>{
+    var value2 = 15;
+    return value2;
+};
+
+let test3 = ()=>{
+    value3 = 18;
+    return value3;
+};
+ 
+
+
+console.log("test1 :", test1() );
+console.log("test2 :", test2() );
+// console.log("test3 :", test3   );
+console.log("test3 :", test3() );
+
+
+console.log("value3 :",value3);
+
+
+console.log("value1 :",value1);
+// console.log("value2 :",value2);
+
