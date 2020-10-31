@@ -1,3 +1,4 @@
+////  obj 取值
 let obj1 = {
     name : "Jeff",
     age  : 18 , 
@@ -23,6 +24,7 @@ let test = "age";
 
 
 ////////////////////////////////////////////////////////////////
+////  .map  /  .filter
 let sample1 = [1,2,3,4,5];
 
 let map1 = sample1.map(n => n*2);
@@ -60,6 +62,7 @@ let result3 = sample1.map(n=>n*3)
 console.log("result3 :",result3);
 
 ////////////////////////////////////////////////////////////////
+//// object in array
 let sample2 = [
     { memNo : 1001 , name : "Jeff"    , money: 1000 },
     { memNo : 1002 , name : "Leo"     , money: 955 },
@@ -84,6 +87,7 @@ console.log("Jeff" + "-" + 18);
 
 console.log("-".repeat(50));
 ////////////////////////////////////////////////////////////////
+//// 小試身手#1
 // 1. 取得 age >= 30 的人名 array 
 //    --> [ "Keven" , "Elle"]
 
@@ -110,3 +114,46 @@ let example2 = arrMapSample.filter(ele => ( ele["scores"][0] + ele["scores"][1] 
                            .map(ele => ( ele["name"] + "-" + ele["age"] )  );
 
 console.log("example2 :",example2);
+
+console.log("-".repeat(50));
+////////////////////////////////////////////////////////////////
+//// function#1
+// 早期 function 
+let add1 = function(a,b){
+    return a+b;
+};
+
+// arrow function 
+let add2 = (a,b) => {
+    return a+b;
+};
+
+let add3 = (a,b) => a+b;
+
+
+console.log("add1 :" , add1(3,5));
+console.log("add2 :" , add2(3,5));
+console.log("add3 :" , add3(3,5));
+
+
+let sayHello = (name) => {
+    console.log(" sayHello function 開始");
+    console.log("Hello ~~~");
+    console.log("你是" + name+ "!!!");
+    
+    let today = "禮拜六";
+    console.log("今天是" + today);
+
+    let a = 123;
+    let b = 456;
+    console.log("a + b :", (a+b) );
+
+    // return "testQQ";
+};
+
+
+// let result6 = sayHello("Jeff");
+sayHello("Jeff");
+
+
+console.log(result6);
