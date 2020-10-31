@@ -78,18 +78,12 @@ for(let i = 6 ; i>0 ; i--){
 };
 
 // 有一變數 name="Jack!" , 試撰寫一程式 , 列印出下列訊息
-let name2 = "Jack!";
+// let name2 = "Jack!";
 // let name2 = ["J","a","c","k","!"];
 
 // for(let i = 0 ; i < name2.length ; i++){
 //     // console.log(i,name2[i]);
 //     console.log(name2[i].repeat(5-i));
-// };
-
-// Waiting !!!
-// for(let w of name2){
-//     // console.log(i);
-//     console.log(w.repeat());
 // };
 
 
@@ -98,6 +92,7 @@ let name2 = "Jack!";
     // console.log(n);
     console.log("*".repeat(n));
 });
+
 
 // for(let i = 6 ; i>0 ; i--){
 //     console.log("*".repeat(i));
@@ -111,7 +106,7 @@ console.log("-".repeat(50));
 let cnt = 0;
 let sum3 = 0;
 
-// while(cnt <= 10){
+// while(cnt <= 10){ 
 while(true){
 
     cnt  += 1 ;
@@ -127,3 +122,44 @@ while(true){
 };
 
 console.log("結束!");
+
+
+console.log("-".repeat(50));
+////////////////////////////////////////////////////////////////
+/// 小試身手#2
+let name2 = "This is a book!";
+let index = 0;
+
+for(let w of name2){
+    console.log(w.repeat( name2.length - index));
+    index+=1;
+};
+
+
+// 計算 1+2+3+…+100 之總和
+let sum6 = new Array(100)
+                .fill(0)
+                .map( (num,index) => index+1)
+                .reduce((a,b)=> a+b);
+
+// console.log(new Array(100).fill(0));
+console.log(sum6);
+
+
+console.log("-".repeat(50));
+////////////////////////////////////////////////////////////////
+// 大樂透號碼
+// 隨機取值
+let getRandomNumber = () => Math.floor( Math.random()*49 )+1 ;
+let arr5 = [];
+
+for(let i=0 ; i<6 ; i++){
+    let num =  getRandomNumber();
+    arr5.push(num);
+};
+
+console.log("大樂透號碼 :" , arr5);
+
+// console.log( getRandomNumber() );
+// console.log( getRandomNumber() );
+// console.log( getRandomNumber() );
