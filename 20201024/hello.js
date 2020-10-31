@@ -8,7 +8,7 @@ const app      = express();
 // const app3     = express();
 
 
-// Setting End-point 
+// Setting End-point (API)
 app.get("/", function(request,response){
     response.send("Hello World!");
    // response.json("Hello World!");
