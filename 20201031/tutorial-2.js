@@ -79,8 +79,51 @@ for(let i = 6 ; i>0 ; i--){
 
 // 有一變數 name="Jack!" , 試撰寫一程式 , 列印出下列訊息
 let name2 = "Jack!";
+// let name2 = ["J","a","c","k","!"];
 
-for(let i = 0 ; i < name2.length ; i++){
-    // console.log(i,name2[i]);
-    console.log(name2[i].repeat(5-i));
+// for(let i = 0 ; i < name2.length ; i++){
+//     // console.log(i,name2[i]);
+//     console.log(name2[i].repeat(5-i));
+// };
+
+// Waiting !!!
+// for(let w of name2){
+//     // console.log(i);
+//     console.log(w.repeat());
+// };
+
+
+// 試撰寫一程式 , 列印出以下圖形  (repeat)
+[6,5,4,3,2,1].map(n=>{
+    // console.log(n);
+    console.log("*".repeat(n));
+});
+
+// for(let i = 6 ; i>0 ; i--){
+//     console.log("*".repeat(i));
+// };
+
+
+console.log("-".repeat(50));
+////////////////////////////////////////////////////////////////
+//// while loop
+
+let cnt = 0;
+let sum3 = 0;
+
+// while(cnt <= 10){
+while(true){
+
+    cnt  += 1 ;
+    sum3 += cnt;
+
+    console.log("這是第" + cnt + "次執行 , 總和 :" + sum3);
+
+    // 終止條件
+    if(cnt === 10){
+        break;
+    };
+
 };
+
+console.log("結束!");
