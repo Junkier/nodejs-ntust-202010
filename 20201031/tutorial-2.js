@@ -142,24 +142,48 @@ let sum6 = new Array(100)
                 .map( (num,index) => index+1)
                 .reduce((a,b)=> a+b);
 
-// console.log(new Array(100).fill(0));
 console.log(sum6);
 
 
 console.log("-".repeat(50));
+
 ////////////////////////////////////////////////////////////////
 // 大樂透號碼
 // 隨機取值
 let getRandomNumber = () => Math.floor( Math.random()*49 )+1 ;
 let arr5 = [];
 
-for(let i=0 ; i<6 ; i++){
-    let num =  getRandomNumber();
-    arr5.push(num);
+// for(let i=0 ; i<6 ; i++){
+//     let num =  getRandomNumber();
+//     arr5.push(num);
+// };
+
+
+
+// const pets = ['cat', 'dog', 'bat'];
+
+// console.log(pets.includes('cat'));
+// expected output: true
+let cnt5 = 0;
+
+while(true){
+
+    let num = getRandomNumber();
+
+    // num 不在 arr5 裡的話 , 再放入 arr5 中
+    if(!arr5.includes(num)){
+        arr5.push(num);
+    };
+
+    // arr5 長度達6個 , 離開 while loop
+    if(arr5.length === 10){
+        break;
+    }
+    console.log("第" + cnt5 + "次執行");
+    cnt5 +=1;
 };
 
-console.log("大樂透號碼 :" , arr5);
 
-// console.log( getRandomNumber() );
-// console.log( getRandomNumber() );
-// console.log( getRandomNumber() );
+
+
+console.log("大樂透號碼 :" , arr5);
