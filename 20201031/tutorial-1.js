@@ -209,6 +209,41 @@ console.log("test3 :", test3() );
 console.log("value3 :",value3);
 
 
-console.log("value1 :",value1);
+// console.log("value1 :",value1);
 // console.log("value2 :",value2);
+console.log("-".repeat(50));
 
+////////////////////////////////////////////////////////////////
+
+let test4 = () => {
+    let num = 20;
+    let a;
+    // var a;
+    // var a   = 123;
+    // const a = 123  // constant , 常數
+    // const a;
+
+    if(num >= 0){
+        console.log("num is positive !!!");
+        a = 456;
+        // var   a = 456;    // function scope
+        // let   a = 456;    // Block    scope
+        // const a = 456;    // Block    scope
+        // a = 456;
+        
+    }
+    else{
+        console.log("num is negative !!!");
+        // var a = -456;
+        // let a = -456;
+        // const a = 456;
+        a = -456;
+    };
+
+    console.log("a :",a);
+
+    
+};
+
+
+test4();
