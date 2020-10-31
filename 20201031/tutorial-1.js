@@ -117,6 +117,7 @@ console.log("example2 :",example2);
 
 console.log("-".repeat(50));
 ////////////////////////////////////////////////////////////////
+
 //// function#1
 // 早期 function 
 let add1 = function(a,b){
@@ -157,3 +158,25 @@ sayHello("Jeff");
 
 
 console.log(result6);
+
+
+// let arrMapSample = [
+//     { name : "Jeff"  , age : 18 , scores : [95,88,100] },
+//     { name : "Leo"   , age : 22 , scores : [90,97,98] },
+//     { name : "Run"   , age : 25 , scores : [75,68,90] },
+//     { name : "Keven" , age : 33 , scores : [77,65,32] },
+//     { name : "Jenny" , age : 20 , scores : [63,82,91] },
+//     { name : "Elle"  , age : 31 , scores : [100,73,83] },
+// ];
+
+let result7 = arrMapSample.map(ele => {
+    let name = ele["name"];
+    console.log("Hello " + name + "!!!");
+    let num  = 123 ;
+    return num
+});
+
+console.log("result7 :",result7);
+
+
+////////////////////////////////////////////////////////////////
