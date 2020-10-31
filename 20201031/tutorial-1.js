@@ -279,6 +279,7 @@ if(b%4 === 0){
 
 console.log("c is :",c);
 
+console.log("-".repeat(50));
 
 // 1) 比較運算子
 //    > , < , >= , <= , == , === , != , !==
@@ -288,3 +289,56 @@ console.log(23 <= 123);
 console.log( (a +100) > b);
 console.log( b % 4);
 console.log( (b % 4) ===1);
+
+console.log("-".repeat(50));
+
+// 2) == / ===
+// ==  : 弱型別 比較
+// === : 強型別 比較
+console.log( "1 == 1"   , 1    == 1);
+console.log( "'1' == 1" , "1"  == 1);
+console.log( "true == 1", true == 1);
+
+console.log("-".repeat(50));
+
+console.log( "1 === 1"   , 1    === 1);
+console.log( "'1' === 1" , "1"  === 1);
+console.log( "true === 1", true === 1);
+
+console.log("123" == 123);
+console.log("123" === 123);
+
+
+// 3) 多條件判斷
+//  酒吧經營:
+//    淑女 (age > 24)         ==> 5折
+//    學生 (age<= 24) + 女生  ==> 7折
+//    學生 (age<= 24) + 男生  ==> 8折
+//    一般男生                ==> 原價
+
+let age = 30;
+let gender = "M";
+
+// if(age >24){
+//     if(gender === "F"){
+//         console.log("女生 (>24) , 5折 !!!");
+//     }else{
+//         console.log("男生 (>24) , 原價 !!!");
+//     }
+// }else{
+//     if(gender === "F"){
+//         console.log("女生 (<=24) , 7折 !!!");
+//     }else{
+//         console.log("男生 (<=24) , 8折 !!!");
+//     }
+// };
+
+if(age >24 && gender === "F"){
+    console.log("女生 (>24) , 5折 !!!");
+} else if (age >24 && gender === "M"){
+    console.log("男生 (>24) , 原價 !!!");
+} else if (age <=24 && gender === "F"){
+    console.log("女生 (<=24) , 7折 !!!");
+} else if (age <=24 && gender === "M"){
+    console.log("男生 (<=24) , 8折 !!!");
+};
