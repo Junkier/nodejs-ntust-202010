@@ -342,3 +342,4 @@ if(age >24 && gender === "F"){
 } else if (age <=24 && gender === "M"){
     console.log("男生 (<=24) , 8折 !!!");
 };
+
