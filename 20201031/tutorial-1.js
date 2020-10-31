@@ -183,6 +183,8 @@ console.log("result7 :",result7);
 console.log("-".repeat(50));
 ////////////////////////////////////////////////////////////////
 
+//// function#2
+// 全域 vs 區域
 let test1 = ()=>{
     let value1 = 12;
     return value1;
@@ -214,6 +216,10 @@ console.log("value3 :",value3);
 console.log("-".repeat(50));
 
 ////////////////////////////////////////////////////////////////
+// var / let / const
+// var:   function scope , 值可任意改
+// let:   block    scope , 值可任意改
+// const: block    scope , 值不可任意改
 
 let test4 = () => {
     let num = 20;
@@ -247,3 +253,38 @@ let test4 = () => {
 
 
 test4();
+
+console.log("-".repeat(50));
+
+////////////////////////////////////////////////////////////////
+//// if-else 
+let a = -23.568;
+if(a>0){
+    console.log("a is +++");
+}else{
+    console.log("a is ---");
+};
+
+let b = 40;
+let c;
+if(b%4 === 0){
+    c = "1st";
+}else if (b%4 === 1){
+    c = "2nd";
+}else if (b%4 === 2){
+    c = "3rd";
+}else{
+    c = "4th";
+};
+
+console.log("c is :",c);
+
+
+// 1) 比較運算子
+//    > , < , >= , <= , == , === , != , !==
+console.log(-24 > 15);
+console.log(23 <= 123);
+
+console.log( (a +100) > b);
+console.log( b % 4);
+console.log( (b % 4) ===1);
