@@ -39,8 +39,7 @@ router.get("/data",(req,res)=>{
 
         console.log("In callback!!!");
 
-
-        // res.json(data);
+        res.json(data);
 
         // res.json(objData);
 
@@ -49,11 +48,61 @@ router.get("/data",(req,res)=>{
 
     });
 
-    res.json(data);
+    // res.json(data);
 
-    console.log("Outside callback!!!");
+    // console.log("Outside callback!!!");
 
-    console.log("End !!!");
+    // console.log("End !!!");
+
+});
+
+
+// callback hell
+router.get("/multi-data",(req,res)=>{
+
+    let arr2 = [];
+
+    fs.readFile("./models/sample2.json","utf8",(err,strData2)=>{  // callback function
+        fs.readFile("./models/sample3.json","utf8",(err,strData3)=>{  // callback function
+            fs.readFile("./models/sample4.json","utf8",(err,strData4)=>{  // callback function
+                fs.readFile("./models/sample5.json","utf8",(err,strData5)=>{  // callback function
+                
+                    let data2 = JSON.parse(strData2);
+                    let data3 = JSON.parse(strData3);
+                    let data4 = JSON.parse(strData4);
+                    let data5 = JSON.parse(strData5);
+            
+                    arr2.push(data2);
+                    arr2.push(data3);
+                    arr2.push(data4);
+                    arr2.push(data5);
+            
+                    res.json({ "result" : arr2});
+            
+                });
+            });
+        });
+    });
+
+});
+
+
+router.get("/multi-data-2",(req,res)=>{
+
+
+    let arr = [];
+    let data2 = fs.readFileSync("./models/sample2.json","utf8");
+    let data3 = fs.readFileSync("./models/sample3.json","utf8");
+    let data4 = fs.readFileSync("./models/sample4.json","utf8");
+    let data5 = fs.readFileSync("./models/sample5.json","utf8");
+
+    arr.push( JSON.parse(data2) );
+    arr.push( JSON.parse(data3) );
+    arr.push( JSON.parse(data4) );
+    arr.push( JSON.parse(data5) );
+
+
+    res.json({ "result" : arr });
 
 });
 
