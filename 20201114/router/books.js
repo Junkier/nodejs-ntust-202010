@@ -87,6 +87,7 @@ router.get("/multi-data",(req,res)=>{
 });
 
 
+// 使用 readFileSync 做檔案讀取
 router.get("/multi-data-2",(req,res)=>{
 
 
@@ -117,11 +118,12 @@ let readFilePromise = (fileName)=>{
                 let data = JSON.parse(strData);
                 resolve(data);
             }
-        })
+        });
     });
 };
 
 
+// 使用 Promise 做檔案讀取
 router.get("/multi-data-3",(req,res)=>{
 
     let arr3 = [];
