@@ -108,7 +108,52 @@ router.get("/multi-data-2",(req,res)=>{
 
 
 
+let readFilePromise = (fileName)=>{
+    return new Promise((resolve,reject)=>{
+        fs.readFile(fileName,"utf8",(err,strData)=>{
+            if(err){
+                reject(err);
+            }else{
+                let data = JSON.parse(strData);
+                resolve(data);
+            }
+        })
+    });
+};
 
+
+router.get("/multi-data-3",(req,res)=>{
+
+    let arr3 = [];
+
+
+    readFilePromise("./models/sample2.json")
+            .then(data2=>{
+                // res.json({ "result" : data });
+                // console.log("Multi data 3 is done!!!");
+
+                arr3.push(data2);
+
+                return readFilePromise("./models/sample3.json");
+            })
+            .then(data3=>{
+                arr3.push(data3);
+                return readFilePromise("./models/sample4.json");
+            })
+            .then(data4=>{
+                arr3.push(data4);
+                return readFilePromise("./models/sample5.json");
+            })
+            .then(data5=>{
+                arr3.push(data5);
+                res.json({ result : arr3 });
+            })
+            .catch(err=>{
+                res.json({ "message" : "* get error"});
+                console.log(err);
+            });
+
+});
 
 
 module.exports = router;
