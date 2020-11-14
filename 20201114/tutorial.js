@@ -61,8 +61,37 @@ let a = 10;
 let b = a%2 === 0 ? 123 : 456;
 console.log(b);
 
-
-
+console.log("-".repeat(50));
 
 // 3. 費氏數列為 1,1,2,3,5,8,13,21,… 
 //     試設計一 func , 輸入為 n , 回傳第n項費氏數列之值
+// fibonacci
+// f(5) = 5  ; f(8) = 21 ; ...
+
+let fibonacci = (n) => {
+    let a1 = 1 ;
+    let a2 = 1 ;
+
+    if(n === 1 || n === 2){
+        return 1;
+    };
+
+    let result = 0 ;
+
+    for(let i = 0 ; i < n-2 ; i++){
+        result = a1 + a2 ;  // r = 2  --> 3 --> 5
+        a1 = a2 ;           // a1 = 1 --> 2
+        a2 = result ;       // a2 = 2 --> 3
+    };
+
+
+    return result ;
+
+};
+
+console.log(fibonacci(8));
+
+for(let n = 1; n< 200 ; n++){
+    console.log("第" + n + "項 : " + fibonacci(n));
+};
+
