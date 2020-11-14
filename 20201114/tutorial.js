@@ -96,7 +96,8 @@
 // };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+// Promise 
+// Basic
 let testPromise = ()=>{
     return new Promise((resolve,reject)=>{
         console.log("abc");
@@ -152,7 +153,7 @@ let flipCoin = ()=>{
 //         console.log(err);
 //     });
 
-
+//// Multi-then
 // flipCoin()
 //    .then(r=>{
 //        console.log(r);
@@ -174,16 +175,44 @@ let flipCoin = ()=>{
 //        console.log(err);
 //    });
 
+//// Promise.all
+// Promise.all([
+//     flipCoin(),
+//     flipCoin(),
+//     flipCoin()
+// ])
+// .then(r=>{
+//     console.log(r);
+//     console.log("Done!!!");
+// })
+// .catch(err=>{
+//     console.log(err);
+// });
 
-Promise.all([
-    flipCoin(),
-    flipCoin(),
-    flipCoin()
-])
-.then(r=>{
-    console.log(r);
-    console.log("Done!!!");
-})
-.catch(err=>{
-    console.log(err);
-});
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const crypto = require("crypto");
+
+let message = "Hello world!";
+
+// let hashValue = crypto.createHash("md5")
+//                       .update(message)
+//                       .digest("hex");
+
+
+let hashValue = crypto.createHash("sha1")
+                      .update(message)
+                      .digest("hex");
+
+
+
+console.log(hashValue);
+
+
+const moment = require("moment");
+console.log( moment().format("YYYY-MM-DD") );
+console.log( moment().format("YYYY/MM/DD HH:mm:ss") );
+
+console.log( moment().add(5,"days").format("YYYYMMDD") );
+console.log( moment().subtract(8,"hours").format("HH:mm") );

@@ -120,7 +120,7 @@ let readFilePromise = (fileName)=>{
                 resolve(data);
             }
         });
-        
+
     });
 };
 
