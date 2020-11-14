@@ -4,16 +4,16 @@ const fs      = require("fs");
 let router = express.Router();
 
 
+// 非同步 , Async
+// fs.readFile 
+// callback
 router.get("/data",(req,res)=>{
 
-    // 非同步
-
-//     let strData = fs.readFile('sample1.json',"utf8",()=>{});
-
-//     console.log(strData);    // 您會得到神秘的 undefined 
-
-//     let objData = JSON.parse(strData);
-//     res.json(objData);
+    
+    //     let strData = fs.readFile('sample1.json',"utf8",()=>{});
+    //     console.log(strData);    // 您會得到神秘的 undefined 
+    //     let objData = JSON.parse(strData);
+    //     res.json(objData);
 
     console.log("Start!!!");
 
@@ -33,13 +33,9 @@ router.get("/data",(req,res)=>{
 
         // Object / JSON / dict 
         // let objData = JSON.parse(strData);
-
-        let objData = JSON.parse(strData);
-
         data = JSON.parse(strData);
 
         console.log(data);
-
 
         console.log("In callback!!!");
 
@@ -47,7 +43,6 @@ router.get("/data",(req,res)=>{
         // res.json(data);
 
         // res.json(objData);
-
 
         // res.json(strData);
 
@@ -60,8 +55,10 @@ router.get("/data",(req,res)=>{
 
     console.log("End !!!");
 
-    
 });
+
+
+
 
 
 
