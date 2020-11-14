@@ -1,12 +1,16 @@
 const express = require("express");
 const app = express();
 
-const hbs  = require("hbs");
+const hbs  = require("hbs");   // handlebars
 const path = require("path"); 
 
 
 // 設定模板 (template) 引擎
-app.engine("html",hbs.__express);
+app.engine( "html" , hbs.__express );
+
+// app.engine( "pug"  , hbs.__express );
+
+
 
 // 設定 template 所在路徑
 app.set("views", path.join(__dirname ,"application","views") );
@@ -22,8 +26,21 @@ app.get("/",(req,res)=>{
 
 
 app.get("/page",(req,res)=>{
-    res.render("index.html");
+    // let name = "Leo";
+    let name = req.query.name;
+    
+    console.log(name);
+
+    res.render("index.html",{
+        testName : name
+    });
 });
+
+// app.get("/page2",(req,res)=>{
+//     res.render("test.pug");
+// });
+
+
 
 
 app.listen(portNum,()=>{
