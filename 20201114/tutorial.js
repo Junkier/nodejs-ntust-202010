@@ -121,8 +121,8 @@ let testPromise = ()=>{
 let flipCoin = ()=>{
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
-            if(Math.random()>0.5){
-                resolve("QQQQQ");
+            if(Math.random()>0.2){
+                resolve("上課！！！");
             }else{
                 reject("翹課 -.-");
             }
@@ -131,23 +131,59 @@ let flipCoin = ()=>{
 };
 
 
-flipCoin()
-    .then(r=>{
-        console.log(r);
-    })
-    .catch(err=>{
-        console.log(err);
-    });
+// flipCoin()
+//     .then(r=>{
+//         console.log(r);
+//     })
+//     .catch(err=>{
+//         console.log(err);
+//     });
 
 
-let promise1 = flipCoin();
+// let promise1 = flipCoin();
 
-console.log(promise1);
+// console.log(promise1);
 
-promise1
-    .then(r=>{ 
-        console.log(r);
-    })
-    .catch(err=>{
-        console.log(err);
-    });
+// promise1
+//     .then(r=>{ 
+//         console.log(r);
+//     })
+//     .catch(err=>{
+//         console.log(err);
+//     });
+
+
+// flipCoin()
+//    .then(r=>{
+//        console.log(r);
+//        return "2. -> 雖然都起床了";
+//    })
+//    .then(r=>{
+//        console.log("第二項 :",r);
+//        return "3. -> 昨天太晚睡 ,還是再睡一點吧";
+//    })
+//    .then(r=>{
+//        console.log(r);
+//        return "4. -> 沒精神無法上課呢";
+//    })
+//    .then(r=>{
+//        console.log("-".repeat(30));
+//        console.log("翹課 QQQ");
+//    })
+//    .catch(err=>{
+//        console.log(err);
+//    });
+
+
+Promise.all([
+    flipCoin(),
+    flipCoin(),
+    flipCoin()
+])
+.then(r=>{
+    console.log(r);
+    console.log("Done!!!");
+})
+.catch(err=>{
+    console.log(err);
+});

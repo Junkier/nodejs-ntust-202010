@@ -111,6 +111,7 @@ router.get("/multi-data-2",(req,res)=>{
 
 let readFilePromise = (fileName)=>{
     return new Promise((resolve,reject)=>{
+
         fs.readFile(fileName,"utf8",(err,strData)=>{
             if(err){
                 reject(err);
@@ -119,6 +120,7 @@ let readFilePromise = (fileName)=>{
                 resolve(data);
             }
         });
+        
     });
 };
 
