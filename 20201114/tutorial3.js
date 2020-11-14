@@ -28,7 +28,7 @@ app.get("/",(req,res)=>{
 app.get("/page",(req,res)=>{
     // let name = "Leo";
     let name = req.query.name;
-    
+
     console.log(name);
 
     res.render("index.html",{
@@ -39,8 +39,6 @@ app.get("/page",(req,res)=>{
 // app.get("/page2",(req,res)=>{
 //     res.render("test.pug");
 // });
-
-
 
 
 app.listen(portNum,()=>{
