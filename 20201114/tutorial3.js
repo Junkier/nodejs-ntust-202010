@@ -16,6 +16,10 @@ app.engine( "html" , hbs.__express );
 app.set("views", path.join(__dirname ,"application","views") );
 
 
+// 設定 靜態檔 位置
+app.use(express.static(path.join(__dirname,"application")));
+
+
 
 let portNum = 8088;
 
