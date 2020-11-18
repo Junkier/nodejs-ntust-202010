@@ -23,6 +23,12 @@
     "score" : 9.5
 },
 {
+    "dramaId" : "1005",
+    "category" : "政治",
+    "name" : "半澤植樹2",
+    "score" : 9.5
+},
+{
     "dramaId" : "1006",
     "category" : "政治",
     "name" : "Legel High",
@@ -33,10 +39,4 @@
     "category" : "愛情",
     "name" : "鬼怪",
     "score" : 10.0
-},
-{
-    "dramaId" : "1005",
-    "category" : "政治",
-    "name" : "半澤植樹2",
-    "score" : 9.5
 }]
