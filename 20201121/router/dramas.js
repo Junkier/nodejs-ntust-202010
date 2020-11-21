@@ -10,7 +10,9 @@ router.get("/page",(req,res)=>{
 
 
 // GET /dramas/list
-router.get("/list",(req,res)=>{
+// hash  2a58c4e5f8s66
+// apiToken
+router.get("/list/2a58c4e5f8s66",(req,res)=>{
 // router.get("/getDramaListData",(req,res)=>{
     let data = fs.readFileSync("./models/sample2.json","utf8");
     data = JSON.parse(data);

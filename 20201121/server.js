@@ -49,6 +49,31 @@ app.use("/dramas",dramasRouter);
 
 
 
+app.get("/hello",
+    // Middleware
+    // (request , response , next)
+    (req,res,next)=>{
+        console.log("This is Middleware 1 !!!");
+        // next();
+        // res.send("Hello World!!!");
+    },
+    (req,res,next)=>{
+        console.log("This is Middleware 2 !!!");
+        next();
+        // res.send("Hello World!!!");
+    },
+    (req,res,next)=>{
+        console.log("This is Middleware 3 !!!");
+        next();
+        // res.send("Hello World!!!");
+    },
+    (req,res)=>{
+        console.log("This is Middleware 4 !!!");
+        // next();
+        res.send("Hello World!!!");
+    }
+);
+
 
 
 let portNum = 8088;
