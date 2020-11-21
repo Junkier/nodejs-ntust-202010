@@ -42,6 +42,20 @@ $(document).ready(function(){
 
         console.log(response);
 
+        let books = response["result"]["books"];
+
+        let template = "";
+
+        // () => {}
+
+        books.map(function(ele){
+            let tag  = ("<li class='p1-color'>" + ele["name"] + "," + ele["author"]+ "</li>");
+            console.log(tag);
+            template += tag;
+        });
+
+        $("body").append(template);
+
     })
     .catch(function(error){
 
