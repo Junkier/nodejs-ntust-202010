@@ -1,7 +1,23 @@
 $(function(){
   
     $("#drama-select-btn").click(function(){
+        console.log('Trigger!!!');
+        
         createTable();
+
+        // Ajax
+        $.ajax({
+            url  : "/dramas/getDramaListData",
+            type : "GET",
+            timeout: 10000 // 10 sec
+        })
+        .then(function(response){
+            console.log(response);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+
     });
 
     $("#drama-insert-btn").click(function(){
