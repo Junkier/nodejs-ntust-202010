@@ -6,6 +6,7 @@ const path    = require("path");
 const app = express();
 
 const dramasRouter = require("./router/dramas");
+const aboutRouter  = require("./router/about");
 
 
 
@@ -28,6 +29,7 @@ app.get("/",(req,res)=>{
 });
 
 
+app.use("/about",aboutRouter);
 app.use("/dramas",dramasRouter);
 
 
