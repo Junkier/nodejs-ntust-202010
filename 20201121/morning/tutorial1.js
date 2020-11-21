@@ -38,7 +38,8 @@ app.get("/page",(req,res)=>{
 });
 
 
-app.get("/data",(req,res)=>{
+// API 
+app.get("/data",(req,res) => {
 
     let data = fs.readFileSync("./models/sample1.json","utf8");
     data = JSON.parse(data);
