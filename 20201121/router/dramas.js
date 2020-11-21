@@ -29,7 +29,7 @@ router.post("/createNewDramaData",(req,res)=>{
 
     let payload = req.body ;
 
-    // console.log(payload);
+    console.log(payload);
     // console.log(payload["name"]);
     // console.log(payload["score"]);
 
