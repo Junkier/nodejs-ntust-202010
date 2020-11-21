@@ -12,6 +12,10 @@ router.get("/page",(req,res)=>{
 router.get("/getDramaListData",(req,res)=>{
     let data = fs.readFileSync("./models/sample2.json","utf8");
     data = JSON.parse(data);
+
+    let type = req.query.type;
+    console.log(type);
+
     res.json({ result:data });
 });
 

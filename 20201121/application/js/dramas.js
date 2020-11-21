@@ -1,22 +1,30 @@
 $(function(){
   
     $("#drama-select-btn").click(function(){
+
+
         console.log('Trigger!!!');
-        
-        createTable();
+
+        var type = $("#categories-select").val();
+
+        // createTable();
 
         // Ajax
+        // query_string 
         $.ajax({
-            url  : "/dramas/getDramaListData",
+            url  : "/dramas/getDramaListData?type="+type,
             type : "GET",
             timeout: 10000 // 10 sec
         })
         .then(function(response){
             console.log(response);
+
+            createTable(response["result"]);
         })
         .catch(function(error){
             console.log(error);
         });
+
 
     });
 
