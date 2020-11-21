@@ -8,6 +8,8 @@ const app = express();
 const dramasRouter = require("./router/dramas");
 const aboutRouter  = require("./router/about");
 
+const bodyParser   = require("body-parser");
+
 
 
 // Template engine 
@@ -19,6 +21,9 @@ app.set("views", path.join(__dirname,"application","views"));
 
 // Static file 
 app.use(express.static( path.join(__dirname,"application")));
+
+// 解析 req.body 使用
+app.use(bodyParser.urlencoded());
 
 
 

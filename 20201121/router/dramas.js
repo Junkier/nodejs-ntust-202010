@@ -22,8 +22,17 @@ router.get("/getDramaListData",(req,res)=>{
         res.json({ result : filteredData });
     };
 
-
-    
 });
+
+
+router.post("/createNewDramaData",(req,res)=>{
+
+    let payload = req.body ;
+    console.log(payload);
+
+    res.json({message : "ok."});
+
+});
+
 
 module.exports = router;

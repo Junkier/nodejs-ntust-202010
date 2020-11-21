@@ -75,7 +75,10 @@ let insertNewRecord = ()=> {
 
 
     $.ajax({
-        url  : "/createNewDramaData",
+        // url  : "/createNewDramaData",    #1
+        url  : "/dramas/createNewDramaData",
+
+
         type : "POST",
         data : {
             category,
@@ -92,7 +95,7 @@ let insertNewRecord = ()=> {
     .then(r=>{
         if(r.message === "ok."){
             alert("更新完成！");
-            location.reload();
+            // location.reload();    #2
         };
         
     })
