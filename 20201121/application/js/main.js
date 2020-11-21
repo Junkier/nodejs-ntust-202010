@@ -34,7 +34,7 @@ $(document).ready(function(){
 
     // Ajax 
     $.ajax({
-        url     : "/data123",
+        url     : "/data",
         type    : "GET",
         timeout : 10000
     })
