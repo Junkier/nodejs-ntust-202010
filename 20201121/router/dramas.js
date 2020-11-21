@@ -23,8 +23,6 @@ router.get("/getDramaListData",(req,res)=>{
     };
 
 
-    // console.log(type);
-
     
 });
 
