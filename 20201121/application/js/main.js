@@ -25,5 +25,29 @@ result2
         console.log(err);
     });
 
-alert("testQQ!!!");
-alert("測試測試~~~");
+
+
+// alert("testQQ!!!");
+// alert("測試測試~~~");
+
+$(document).ready(function(){
+
+    // Ajax 
+    $.ajax({
+        url     : "/data123",
+        type    : "GET",
+        timeout : 10000
+    })
+    .then(function(response){
+
+        console.log(response);
+
+    })
+    .catch(function(error){
+
+        console.log(error);
+
+    });
+
+
+});

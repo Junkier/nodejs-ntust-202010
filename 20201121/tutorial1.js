@@ -3,6 +3,7 @@ const app = express();
 
 const hbs  = require("hbs");   // handlebars
 const path = require("path"); 
+const fs   = require("fs");
 
 
 // 設定模板 (template) 引擎
@@ -19,8 +20,6 @@ app.set("views", path.join(__dirname ,"application","views") );
 // static file
 app.use(express.static(path.join(__dirname,"application")));
 
-// /js-demo/main.js
-
 
 
 let portNum = 8088;
@@ -32,19 +31,21 @@ app.get("/",(req,res)=>{
 
 
 app.get("/page",(req,res)=>{
-    // let name = "Leo";
-    let name = req.query.name;
-
-    console.log(name);
-
+    let name = req.query.name || "Jeff";
     res.render("index.html",{
         testName : name
     });
 });
 
-// app.get("/page2",(req,res)=>{
-//     res.render("test.pug");
-// });
+
+app.get("/data123",(req,res)=>{
+
+    let data = fs.readFileSync("./models/sample1.json","utf8");
+    data = JSON.parse(data);
+
+    res.json({ result:data });
+
+});
 
 
 app.listen(portNum,()=>{
