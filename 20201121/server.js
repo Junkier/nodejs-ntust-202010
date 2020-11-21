@@ -5,6 +5,10 @@ const path    = require("path");
 
 const app = express();
 
+const dramasRouter = require("./router/dramas");
+
+
+
 // Template engine 
 app.engine("html",hbs.__express);
 
@@ -24,9 +28,10 @@ app.get("/",(req,res)=>{
 });
 
 
+app.use("/dramas",dramasRouter);
+
+
 let portNum = 8088;
-
-
 
 app.listen(portNum,()=>{
     console.log("Server is running at: http://localhost:"+portNum);
