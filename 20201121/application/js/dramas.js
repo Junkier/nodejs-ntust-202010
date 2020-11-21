@@ -85,6 +85,7 @@ let insertNewRecord = ()=> {
             name,
             score
         },
+
         // data : JSON.stringify({
         //     category,
         //     name,

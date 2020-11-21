@@ -22,8 +22,17 @@ app.set("views", path.join(__dirname,"application","views"));
 // Static file 
 app.use(express.static( path.join(__dirname,"application")));
 
-// 解析 req.body 使用
-app.use(bodyParser.urlencoded());
+
+
+// 解析  application/json
+app.use(bodyParser.json());
+
+// 解析 application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended : false ,        // 額外套件使用
+    limit : "1mb",            // 參數大小
+    parameterLimit : '10000'  // 參數數量大小
+}));
 
 
 

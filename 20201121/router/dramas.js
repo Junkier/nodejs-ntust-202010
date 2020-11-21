@@ -28,7 +28,22 @@ router.get("/getDramaListData",(req,res)=>{
 router.post("/createNewDramaData",(req,res)=>{
 
     let payload = req.body ;
-    console.log(payload);
+    // console.log(payload);
+    // console.log(payload["name"]);
+    // console.log(payload["score"]);
+
+
+    let data = fs.readFileSync("./models/sample2.json","utf8");
+    data = JSON.parse(data);
+
+    // [ {} , {} , {} , ...]
+
+    data.push(payload);
+
+
+    fs.writeFileSync("./models/sample2.json",JSON.stringify(data),"utf8");
+
+
 
     res.json({message : "ok."});
 
