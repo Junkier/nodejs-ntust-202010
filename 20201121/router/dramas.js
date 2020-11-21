@@ -9,7 +9,9 @@ router.get("/page",(req,res)=>{
 });
 
 
-router.get("/getDramaListData",(req,res)=>{
+// GET /dramas/list
+router.get("/list",(req,res)=>{
+// router.get("/getDramaListData",(req,res)=>{
     let data = fs.readFileSync("./models/sample2.json","utf8");
     data = JSON.parse(data);
 
@@ -25,7 +27,10 @@ router.get("/getDramaListData",(req,res)=>{
 });
 
 
-router.post("/createNewDramaData",(req,res)=>{
+// POST /dramas/data
+// router.post("/createNewDramaData",(req,res)=>{
+router.post("/data",(req,res)=>{
+
 
     let payload = req.body ;
 

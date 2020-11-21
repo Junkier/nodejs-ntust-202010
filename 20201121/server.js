@@ -24,7 +24,7 @@ app.use(express.static( path.join(__dirname,"application")));
 
 
 
-// 解析  application/json
+// 解析 application/json
 // app.use(bodyParser.json());
 
 // 解析 application/x-www-form-urlencoded
@@ -33,7 +33,6 @@ app.use(bodyParser.urlencoded({
     limit : "1mb",            // 參數大小
     parameterLimit : '10000'  // 參數數量大小
 }));
-
 
 
 app.get("/",(req,res)=>{
@@ -45,6 +44,11 @@ app.get("/",(req,res)=>{
 
 app.use("/about",aboutRouter);
 app.use("/dramas",dramasRouter);
+
+
+
+
+
 
 
 let portNum = 8088;

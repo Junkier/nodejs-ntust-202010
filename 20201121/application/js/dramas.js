@@ -12,7 +12,7 @@ $(function(){
         // Ajax
         // query_string 
         $.ajax({
-            url  : "/dramas/getDramaListData?type="+type,
+            url  : "/dramas/list?type="+type,
             type : "GET",
             timeout: 10000 // 10 sec
         })
@@ -76,7 +76,7 @@ let insertNewRecord = ()=> {
 
     $.ajax({
         // url  : "/createNewDramaData",    #1
-        url  : "/dramas/createNewDramaData",
+        url  : "/dramas/data",
 
 
         type : "POST",
