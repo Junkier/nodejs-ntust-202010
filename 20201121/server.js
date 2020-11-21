@@ -25,7 +25,7 @@ app.use(express.static( path.join(__dirname,"application")));
 
 
 // 解析  application/json
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // 解析 application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({

@@ -44,7 +44,7 @@ let createTable = (data)=>{
 
     let tableBody = data.map((ele,i)=>`
         <tr>
-            <th scope="row">${i+1}</th>
+            <th scope="row">${ele.dramaId}</th>
             <td>${ele.category}</td>
             <td>${ele.name}</td>
             <td>${ele.score} / 10</td>
