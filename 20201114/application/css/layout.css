@@ -3,12 +3,17 @@
 }
 
 #food-content{
-    font-size: 60px;
-    color: #00f;
+    font-size: 30px;
+    color: #7171db;
 }
 
 .p2-color{
     width:50% ; 
     margin-left:30%; 
     border: 1px solid #000; 
+}
+
+#food-content li {
+    margin: 5px;
+    margin-left: 30px;
 }
