@@ -5,12 +5,18 @@ const hbs    = require("hbs");
 const path   = require("path");
 
 const session     = require("express-session");
-const redis       = require("redis");
-const redisStore  = require("connect-redis")(session);
-const redisClient = redis.createClient();
+// const redis       = require("redis");
+// const redisStore  = require("connect-redis")(session);
+// const redisClient = redis.createClient();
 
 
 const bodyParser   = require("body-parser");
+
+
+
+const dramasRouter = require("./router/dramas");
+const aboutRouter  = require("./router/about");
+
 
 // 設定模板引擎
 app.engine('html',hbs.__express);
@@ -33,7 +39,7 @@ app.use( bodyParser.urlencoded( {
 
 // Use Session
 app.use(session({
-    store : new redisStore({ client: redisClient}),
+    // store : new redisStore({ client: redisClient}),
     secret : "c90dis90#" ,
     resave : true,
     saveUninitialized : false,
@@ -49,10 +55,12 @@ app.get("/login",(req,res)=>{
 });
 
 let isAccountExist = (req,res,next)=>{
+    // do something ...
     next();
 };
 
 let isPasswdExist = (req,res,next)=>{
+    // do something ...
     next();
 };
 
@@ -99,26 +107,35 @@ app.post("/auth",
   (req,res,next)=>{
      res.json({
        message  : "ok.",
-       redirect : "/dramas/page"
+       redirect : "/"
      });
   }
 );
 
 
-let isUserLogined = (req,res,next)=>{
-    if(!req.session.userInfo || !req.session.userInfo.isLogined){
-        res.redirect("/login");
-        return;
-    }
-    next();
-}
+app.use("/about",aboutRouter);
+app.use("/dramas",dramasRouter);
 
 
-app.get("/dramas/page",
-    isUserLogined,
+
+app.get("/logout",(req,res)=>{
+    req.session.destroy();
+    res.clearCookie("_ntust_tutorial_id");
+    res.redirect("/login");
+});
+
+
+
+app.get("/",
+    (req,res,next)=>{
+        if(!req.session.userInfo || !req.session.userInfo.isLogined){
+            res.redirect("/login");
+            return;
+        };
+        next();
+    },
     (req,res)=>{
-        let name = req.session.userInfo.name;
-        res.render("dramas.html",{ templateName : name });
+        res.render("index.html");
     }
 );
 
@@ -127,3 +144,6 @@ app.get("/dramas/page",
 app.listen(8088,function(){
     console.log("Server is running at http://localhost:" + String(8088));
 });
+
+
+

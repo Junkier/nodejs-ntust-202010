@@ -1,9 +1,9 @@
 const express = require('express');
+const hbs     = require("hbs");
+const path    = require("path");
 const app = express();
 
 
-const hbs    = require("hbs");
-const path   = require("path");
 
 
 // 設定模板引擎
