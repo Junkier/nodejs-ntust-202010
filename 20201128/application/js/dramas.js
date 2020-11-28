@@ -14,7 +14,7 @@ $(function(){
         $.ajax({
             url  : "/dramas/list?type="+type,
             headers : {
-                token : "APTX4869"
+                token : "APTX4869123465"
             },
             // url  : "/dramas/list?type="+type+"&token=APTX4869",
            
@@ -93,7 +93,7 @@ let insertNewRecord = ()=> {
             score
         },
         headers : {
-            token : "APTX4869"
+            token : "APTX4869aaa"
         }
 
         // data : JSON.stringify({

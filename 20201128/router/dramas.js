@@ -12,10 +12,24 @@ router.get("/page",(req,res)=>{
 });
 
 
+router.use(
+    validator.isTokenValidInHeaders,
+    // (req,res,next) => {
+    //     console.log("router.use middleware 1 !!!");
+    //     next();
+    // },
+    // (req,res,next) => {
+    //     console.log(req.query);
+    //     next();
+    // }
+);
+
+
+
+
 // GET /dramas/list
 router.get("/list",
-    validator.isTokenValidInHeaders,
-    // validator.isTokenValid,
+    // validator.isTokenValidInHeaders,
     (req,res)=>{
     // router.get("/getDramaListData",(req,res)=>{
         let data = fs.readFileSync("./models/sample2.json","utf8");
@@ -34,11 +48,12 @@ router.get("/list",
 );
 
 
+
+
 // POST /dramas/data
 // router.post("/createNewDramaData",(req,res)=>{
 router.post("/data",
-    validator.isTokenValidInHeaders,
-    // validator.isTokenValid,
+    // validator.isTokenValidInHeaders,
     (req,res)=>{
 
 
