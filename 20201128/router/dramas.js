@@ -12,17 +12,17 @@ router.get("/page",(req,res)=>{
 });
 
 
-router.use(
-    validator.isTokenValidInHeaders,
-    // (req,res,next) => {
-    //     console.log("router.use middleware 1 !!!");
-    //     next();
-    // },
-    // (req,res,next) => {
-    //     console.log(req.query);
-    //     next();
-    // }
-);
+// router.use(
+//     validator.isTokenValidInHeaders,
+//     // (req,res,next) => {
+//     //     console.log("router.use middleware 1 !!!");
+//     //     next();
+//     // },
+//     // (req,res,next) => {
+//     //     console.log(req.query);
+//     //     next();
+//     // }
+// );
 
 
 
