@@ -71,22 +71,41 @@ app.get("/hello",
 
 
 app.get("/main",
+
     // 1. type 參數是否存在
     (req,res,next) => {
         if(!req.query.type){
             res.send("缺少 type 參數!");
-        }else{
-            next();
-        }
+            return;
+        };
+
+        next();
+
+        // if(!req.query.type){
+        //     res.send("缺少 type 參數!");
+        // }else{
+        //     next();
+        // }
     },
 
     // 2. type 參數是否正確 --> data / page 
     (req,res,next) =>{
-        if(req.query.type === "data" || req.query.type === "page"){
-            next();
-        }else{
+
+        // Error fist 
+        if(req.query.type !== "data" && req.query.type !== "page"){
             res.send("type 參數錯誤!");
+            return;
         };
+
+        // Non else
+        next();
+
+
+        // if(req.query.type === "data" || req.query.type === "page"){
+        //     next();
+        // }else{
+        //     res.send("type 參數錯誤!");
+        // };
     },
 
     // 3. 主邏輯區
