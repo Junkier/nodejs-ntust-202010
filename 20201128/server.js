@@ -45,10 +45,9 @@ app.use(session({
 ////// 之後可存取 req.session 物件
 
 
-app.use("/about",aboutRouter);
-app.use("/dramas",dramasRouter);
+app.use("/about", validator.isUserLogined, aboutRouter);
+app.use("/dramas",validator.isUserLogined, dramasRouter);
 app.use("/auth",authRouter);
-
 
 
 
@@ -63,6 +62,8 @@ app.get("/",
 	}
 );
 
+
+// app.use(validator.isUserLogined);
 
 app.get("/login",(req,res)=>{
 	res.render("login.html");
