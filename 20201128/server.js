@@ -12,6 +12,8 @@ const aboutRouter  = require("./router/about");
 const bodyParser   = require("body-parser");
 const { json } = require("body-parser");
 
+const validator = require("./utlis/validator");
+
 
 
 // Template engine 
@@ -75,27 +77,29 @@ app.get("/hello",
 
 app.get("/main",
 
+    validator.isTokenValid,
 
     // Token 檢查 
-    (req,res,next) => {
+    // 匿名 Middleware
+    // (req,res,next) => {
 
-        // token 是否存在
-        if(!req.query.token){
-            res.status(400).send("缺少 token");
-            // res.send("缺少 token !");
-            return;
-        };
+    //     // token 是否存在
+    //     if(!req.query.token){
+    //         res.status(400).send("缺少 token");
+    //         // res.send("缺少 token !");
+    //         return;
+    //     };
 
-        // token 是否正確
-        if(req.query.token !== "APTX4869"){
-            res.status(400).send("token 錯誤!");
-            // res.send("token 錯誤!");
-            return;
-        };
+    //     // token 是否正確
+    //     if(req.query.token !== "APTX4869"){
+    //         res.status(400).send("token 錯誤!");
+    //         // res.send("token 錯誤!");
+    //         return;
+    //     };
 
-        next();
+    //     next();
 
-    },
+    // },
 
     // 1. type 參數是否存在
     (req,res,next) => {
@@ -151,7 +155,6 @@ app.get("/main",
                 templateBooks : books
             });
         };
-
 
     }
 );
