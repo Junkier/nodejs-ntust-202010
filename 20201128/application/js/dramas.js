@@ -12,8 +12,12 @@ $(function(){
         // Ajax
         // query_string 
         $.ajax({
-            url  : "/dramas/list?type="+type+"&token=APTX4869",
-            // url  : "/dramas/list?type="+type,
+            url  : "/dramas/list?type="+type,
+            headers : {
+                token : "APTX4869"
+            },
+            // url  : "/dramas/list?type="+type+"&token=APTX4869",
+           
             type : "GET",
             timeout: 10000 // 10 sec
         })
@@ -88,6 +92,9 @@ let insertNewRecord = ()=> {
             name,
             score
         },
+        headers : {
+            token : "APTX4869"
+        }
 
         // data : JSON.stringify({
         //     category,
