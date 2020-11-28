@@ -39,11 +39,25 @@ let isTokenValidInHeaders = (req,res,next)=>{
 
 };
 
+
+
+let isUserLogined = (req,res,next)=>{
+    if(req.session.userInfo  && req.session.userInfo.isLogined === true){
+        next();
+    }else{
+        res.status(401).send("請先 <a href='/login'>登入</a> !!!");
+    };
+
+};
+
 module.exports = {
     isTokenValid : isTokenValid,
     isTokenValidInHeaders : isTokenValidInHeaders,
-    testQQ : "abcdef",
-    data: [1,2,3,4,5]
+    isUserLogined : isUserLogined
+
+
+    // testQQ : "abcdef",
+    // data: [1,2,3,4,5]
 
     // isTokenValid : (req,res,next) => {
 

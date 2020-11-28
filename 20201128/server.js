@@ -12,6 +12,8 @@ const dramasRouter = require("./router/dramas");
 const aboutRouter  = require("./router/about");
 const authRouter   = require("./router/auth");
 
+const validator    = require("./utlis/validator");
+
 
 // 設定模板引擎
 app.engine('html',hbs.__express);
@@ -33,31 +35,33 @@ app.use( bodyParser.urlencoded( {
 
 
 app.use(session({
-	secret : "c90dis90#" ,
-	resave : true,
-	saveUninitialized : false,
-	name:"_ntust_tutorial_id",
-	ttl : 24*60*60*1
+	secret : "c90dis90#" ,	     // 加密 session_id (salt)
+	resave : true,               // 不論修改 , 回存到 stores 
+	saveUninitialized : false,   // 初始化的　session data , 使否存到 stores
+	name:"_ntust_tutorial_id",   // cookie name
+	ttl : 24*60*60*1             // session 有效時間
 }));
 
-//// 之後可存取 req.session 物件
-
-
-  
-
+////// 之後可存取 req.session 物件
 
 
 app.use("/about",aboutRouter);
 app.use("/dramas",dramasRouter);
 app.use("/auth",authRouter);
 
-app.get("/",(req,res)=>{
 
-	console.log("FROM GET / !!!");
-	console.log(req.session);
 
-    res.render("index.html");
-});
+
+app.get("/",
+	validator.isUserLogined,
+	(req,res)=>{
+
+		console.log("FROM GET / !!!");
+		console.log(req.session);
+
+		res.render("index.html");
+	}
+);
 
 
 app.get("/login",(req,res)=>{
