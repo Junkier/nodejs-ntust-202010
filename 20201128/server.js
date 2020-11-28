@@ -5,6 +5,7 @@ const hbs    = require("hbs");
 const path   = require("path");
 
 const bodyParser   = require("body-parser");
+const session      = require("express-session");
 
 
 const dramasRouter = require("./router/dramas");
@@ -31,12 +32,30 @@ app.use( bodyParser.urlencoded( {
 }));
 
 
+app.use(session({
+	secret : "c90dis90#" ,
+	resave : true,
+	saveUninitialized : false,
+	name:"_ntust_tutorial_id",
+	ttl : 24*60*60*1
+}));
+
+//// 之後可存取 req.session 物件
+
+
+  
+
+
 
 app.use("/about",aboutRouter);
 app.use("/dramas",dramasRouter);
 app.use("/auth",authRouter);
 
 app.get("/",(req,res)=>{
+
+	console.log("FROM GET / !!!");
+	console.log(req.session);
+
     res.render("index.html");
 });
 

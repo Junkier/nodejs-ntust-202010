@@ -34,6 +34,13 @@ let isUserValid = (req,res,next) => {
 
 let setUserInfo = (req,res,next)=>{
     console.log("setUserInfo !!!");
+    console.log(req.session);
+
+    req.session.userInfo = {
+        name : "jeff",
+        isLogined : true
+    };
+
     next();
 };
 
@@ -41,6 +48,7 @@ let setUserInfo = (req,res,next)=>{
 
 // POST /auth
 router.post("/",
+
     // 1. 檢查 account / passwd 是否存在
     isAccountAndPasswdExist,
 
@@ -51,7 +59,7 @@ router.post("/",
     setUserInfo,
     
     (req,res)=>{
-        console.log(req.body);
+        // console.log(req.body);
         res.json({message:"ok."});
     }
 );
