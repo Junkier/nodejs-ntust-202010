@@ -10,6 +10,31 @@
     </head>
 
     <body style="overflow-y: scroll">
+
+        <div id="food-content">
+            <ul>
+
+                <!-- [
+                    { "no" : 10001 , "name" : "傷心咖啡店之歌"    , "author" : "朱少麟" , "type" : "文學" },
+                    { "no" : 10002 , "name" : "一個投機者的告白"  , "author" : "科斯托蘭尼" , "type" : "投資" },
+                    { "no" : 10005 , "name" : "1Q84"             , "author" : "村上春樹" , "type" : "小說" },
+                    { "no" : 10003 , "name" : "灌籃高手"          , "author" : "井上雄彥" , "type" : "漫畫" },
+                    { "no" : 10004 , "name" : "獵人"             , "author" : "休刊王" , "type" : "漫畫" }
+                ] -->
+
+                
+                <!-- handlebars -->
+                {{#each templateBooks}}
+                    <li>{{ this.name }} , {{ this.author }}</li>
+                {{/each}}
+
+                <!-- <li>漢堡</li>
+                <li>薯條</li>
+                <li>可樂</li>
+                <li>雞塊</li> -->
+            </ul>
+        </div>
+
         <h1>Hello World !!!</h1>
         <h2>今天很好~</h2>
         <h3>QQQQ</h3>
@@ -27,14 +52,7 @@
             <p class="p2-color"> 好欸~~ </p>
         </div>
 
-        <div id="food-content">
-            <ul>
-                <li>漢堡</li>
-                <li>薯條</li>
-                <li>可樂</li>
-                <li>雞塊</li>
-            </ul>
-        </div>
+        
       
     </body>
 </html>

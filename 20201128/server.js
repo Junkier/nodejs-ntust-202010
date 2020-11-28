@@ -76,14 +76,18 @@ app.get("/main",
         // type :
         // - data --> json
         // - page --> html
+        let data = fs.readFileSync("./models/sample1.json","utf8");
+        data = JSON.parse(data);
+
         if(req.query.type === "data"){
-            
-            let data = fs.readFileSync("./models/sample1.json","utf8");
-            data = JSON.parse(data);
+           
             res.json({ result : data });
 
         } else if (req.query.type === "page"){
-            res.render("middleware-tutorial.html");
+            let books = data["books"];
+            res.render("middleware-tutorial.html" , {
+                templateBooks : books
+            });
         };
     }
 );
