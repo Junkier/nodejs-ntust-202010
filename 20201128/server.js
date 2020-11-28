@@ -29,6 +29,7 @@ app.set("views", path.join(__dirname,"application","views"));
 app.use(express.static( path.join(__dirname,"application")));
 
 
+//// 解析 req.body
 
 // 解析 application/json
 // app.use(bodyParser.json());
@@ -39,6 +40,7 @@ app.use(bodyParser.urlencoded({
     limit : "1mb",            // 參數大小
     parameterLimit : '10000'  // 參數數量大小
 }));
+
 
 
 app.get("/",(req,res)=>{
