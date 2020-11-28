@@ -13,6 +13,8 @@ const bodyParser   = require("body-parser");
 const { json } = require("body-parser");
 
 const validator = require("./utlis/validator");
+// const test      = require("./utlis/validator").data;
+// console.log(test);
 
 
 

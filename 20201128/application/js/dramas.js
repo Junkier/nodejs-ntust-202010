@@ -12,7 +12,8 @@ $(function(){
         // Ajax
         // query_string 
         $.ajax({
-            url  : "/dramas/list?type="+type,
+            url  : "/dramas/list?type="+type+"&token=APTX4869",
+            // url  : "/dramas/list?type="+type,
             type : "GET",
             timeout: 10000 // 10 sec
         })
@@ -22,6 +23,8 @@ $(function(){
             createTable(response["result"]);
         })
         .catch(function(error){
+            // alert("失敗!");
+            alert(error.responseText);
             console.log(error);
         });
 

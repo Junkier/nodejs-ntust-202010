@@ -3,6 +3,9 @@ const fs      = require("fs");
 
 let router    = express.Router();
 
+const validator = require("../utlis/validator");
+
+
 
 router.get("/page",(req,res)=>{
     res.render("dramas.html");
@@ -10,23 +13,24 @@ router.get("/page",(req,res)=>{
 
 
 // GET /dramas/list
-// hash  2a58c4e5f8s66
-// apiToken
-router.get("/list/2a58c4e5f8s66",(req,res)=>{
-// router.get("/getDramaListData",(req,res)=>{
-    let data = fs.readFileSync("./models/sample2.json","utf8");
-    data = JSON.parse(data);
+router.get("/list",
+    validator.isTokenValid,
+    (req,res)=>{
+    // router.get("/getDramaListData",(req,res)=>{
+        let data = fs.readFileSync("./models/sample2.json","utf8");
+        data = JSON.parse(data);
 
-    let type = req.query.type;
+        let type = req.query.type;
 
-    if(type === "全"){
-        res.json({ result:data });
-    }else{
-        let filteredData = data.filter(ele => ele["category"] === type);
-        res.json({ result : filteredData });
-    };
+        if(type === "全"){
+            res.json({ result:data });
+        }else{
+            let filteredData = data.filter(ele => ele["category"] === type);
+            res.json({ result : filteredData });
+        };
 
-});
+    }
+);
 
 
 // POST /dramas/data

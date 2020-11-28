@@ -21,7 +21,9 @@ let isTokenValid = (req,res,next) => {
 
 module.exports = {
     isTokenValid : isTokenValid,
-    
+    testQQ : "abcdef",
+    data: [1,2,3,4,5]
+
     // isTokenValid : (req,res,next) => {
 
     //     // token 是否存在
