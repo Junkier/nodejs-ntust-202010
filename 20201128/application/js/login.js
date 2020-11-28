@@ -10,10 +10,10 @@ $(function(){
 
     $("#login-btn").click(function(){
         var account = $("#account").val();
-        var passwd  = $("#passwd").val();
+        var passwdabcd  = $("#passwd").val();
 
 
-        axios.post("/auth",{ account , passwd })
+        axios.post("/auth",{ account , passwdabcd })
              .then(function(res){
                 var message = res.data.message;
                 changeErrMsgState(message);
