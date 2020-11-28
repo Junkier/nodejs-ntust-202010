@@ -70,12 +70,37 @@ app.get("/hello",
 );
 
 
+
+
+
 app.get("/main",
+
+
+    // Token 檢查 
+    (req,res,next) => {
+
+        // token 是否存在
+        if(!req.query.token){
+            res.status(400).send("缺少 token");
+            // res.send("缺少 token !");
+            return;
+        };
+
+        // token 是否正確
+        if(req.query.token !== "APTX4869"){
+            res.status(400).send("token 錯誤!");
+            // res.send("token 錯誤!");
+            return;
+        };
+
+        next();
+
+    },
 
     // 1. type 參數是否存在
     (req,res,next) => {
         if(!req.query.type){
-            res.send("缺少 type 參數!");
+            res.status(400).send("缺少 type 參數!");
             return;
         };
 
@@ -93,7 +118,7 @@ app.get("/main",
 
         // Error fist 
         if(req.query.type !== "data" && req.query.type !== "page"){
-            res.send("type 參數錯誤!");
+            res.status(400).send("type 參數錯誤!");
             return;
         };
 
