@@ -70,6 +70,19 @@ app.get("/login",(req,res)=>{
 });
 
 
+app.get("/logout",(req,res)=>{
+
+	// 刪除 session data
+	req.session.destroy();
+
+	// 刪除 cookie
+	res.clearCookie("_ntust_tutorial_id");
+
+	res.redirect("/login");
+
+});
+
+
 app.listen(8088,function(){
     console.log("Server is running at http://localhost:" + String(8088));
 });
