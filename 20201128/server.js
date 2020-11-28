@@ -1,5 +1,6 @@
 const express = require("express");
 const hbs     = require("hbs");
+const fs      = require("fs");
 const path    = require("path");
 
 
@@ -9,6 +10,7 @@ const dramasRouter = require("./router/dramas");
 const aboutRouter  = require("./router/about");
 
 const bodyParser   = require("body-parser");
+const { json } = require("body-parser");
 
 
 
@@ -68,31 +70,23 @@ app.get("/hello",
 );
 
 
+app.get("/main",
 
-// app.get("/hello",
-//     // Middleware
-//     // (request , response , next)
-//     (req,res,next)=>{
-//         console.log("This is Middleware 1 !!!");
-//         // next();
-//         // res.send("Hello World!!!");
-//     },
-//     (req,res,next)=>{
-//         console.log("This is Middleware 2 !!!");
-//         next();
-//         // res.send("Hello World!!!");
-//     },
-//     (req,res,next)=>{
-//         console.log("This is Middleware 3 !!!");
-//         next();
-//         // res.send("Hello World!!!");
-//     },
-//     (req,res)=>{
-//         console.log("This is Middleware 4 !!!");
-//         // next();
-//         res.send("Hello World!!!");
-//     }
-// );
+    (req,res,next)=>{
+        // type :
+        // - data --> json
+        // - page --> html
+        if(req.query.type === "data"){
+            
+            let data = fs.readFileSync("./models/sample1.json","utf8");
+            data = JSON.parse(data);
+            res.json({ result : data });
+
+        } else if (req.query.type === "page"){
+            res.render("middleware-tutorial.html");
+        };
+    }
+);
 
 
 
