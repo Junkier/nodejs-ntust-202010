@@ -12,7 +12,7 @@ const dramasRouter = require("./router/dramas");
 const aboutRouter  = require("./router/about");
 const authRouter   = require("./router/auth");
 
-const validator    = require("./utlis/validator");
+const validator    = require("./utils/validator");
 
 
 // 設定模板引擎

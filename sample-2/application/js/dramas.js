@@ -2,12 +2,7 @@ $(function(){
   
     $("#drama-select-btn").click(function(){
 
-
-        console.log('Trigger!!!');
-
         var type = $("#categories-select").val();
-
-        // createTable();
 
         // Ajax
         // query_string 
@@ -81,10 +76,7 @@ let insertNewRecord = ()=> {
 
 
     $.ajax({
-        // url  : "/createNewDramaData",    #1
         url  : "/dramas/data",
-
-
         type : "POST",
         data : {
             category,
@@ -100,10 +92,7 @@ let insertNewRecord = ()=> {
         // contentType: "application/json",
     })
     .then(r=>{
-        if(r.message === "ok."){
-            alert("更新完成！");
-            // location.reload();    #2
-        };
+        if(r.message === "ok.")  alert("更新完成！");
         
     })
     .catch(err=>{

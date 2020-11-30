@@ -4,18 +4,19 @@ const app = express();
 const hbs    = require("hbs");
 const path   = require("path");
 
-const session     = require("express-session");
-const redis       = require("redis");
-const redisStore  = require("connect-redis")(session);
-const redisClient = redis.createClient();
-
-
 const bodyParser   = require("body-parser");
+const session      = require("express-session");
+const redis        = require("redis");
+const redisStore   = require("connect-redis")(session);
+const redisClient  = redis.createClient();
 
 
-const dramas   = require("./router/dramas");
+const dramasRouter = require("./router/dramas");
+const aboutRouter  = require("./router/about");
+const authRouter   = require("./router/auth");
 
-const utils    = require("./utils");
+const validator    = require("./utils/validator");
+
 
 // 設定模板引擎
 app.engine('html',hbs.__express);
@@ -36,43 +37,54 @@ app.use( bodyParser.urlencoded( {
 }));
 
 
-// Use Session
 app.use(session({
-    store : new redisStore({ client: redisClient}),
-    secret : "c90dis90#" ,
-    resave : true,
-    saveUninitialized : false,
-    name:"_ntust_tutorial_id",
-    ttl : 24*60*60*1
-}))
+  store : new redisStore({ client: redisClient}),
+	secret : "c90dis90#" ,	     // 加密 session_id (salt)
+	resave : true,               // 不論修改 , 回存到 stores 
+	saveUninitialized : false,   // 初始化的　session data , 使否存到 stores
+	name:"_ntust_tutorial_id",   // cookie name
+	ttl : 24*60*60*1             // session 有效時間
+}));
+
+////// 之後可存取 req.session 物件
+
+app.use("/about", validator.isUserLogined, aboutRouter);
+app.use("/dramas",validator.isUserLogined, dramasRouter);
+app.use("/auth",authRouter);
 
 
-app.get("/login",(req,res)=>{
-    res.render("login.html");
-});
 
-
-app.post("/auth",
-  utils.isUserValid,
-  utils.setUserInfo,
-  (req,res,next)=>{
-     res.json({
-       message  : "ok.",
-       redirect : "/dramas/page"
-     });
-  }
+app.get("/",
+	validator.isUserLogined,
+	(req,res)=>{
+		let name = req.session.userInfo.name;
+		res.render("index.html",{ templateName : name });
+	}
 );
 
 
-app.use("/dramas",utils.isUserLogined,dramas);
+app.get("/login",
+	(req,res,next)=>{
+		if(req.session.userInfo && req.session.userInfo.isLogined) res.redirect("/");
+		else next();
+	},
+	(req,res)=>{
+		res.render("login.html");
+
+	}
+);
 
 
-app.get("/",(req,res)=>{
-    res.send("Hello World!");
+app.get("/logout",(req,res)=>{
+	req.session.destroy();
+	res.clearCookie("_ntust_tutorial_id");
+	res.redirect("/login");
 });
-
 
 
 app.listen(8088,function(){
     console.log("Server is running at http://localhost:" + String(8088));
 });
+
+
+

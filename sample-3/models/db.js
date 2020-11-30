@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+// log 紀錄開啟
+mongoose.set("debug",true);
+
 const connConfig = "mongodb://localhost:27017/tutorial" ;
 
 const conn = mongoose.createConnection(connConfig,{ 
