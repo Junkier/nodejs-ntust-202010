@@ -1,35 +1,35 @@
-let isUserValid = (req,res,next)=>{
-    let account = req.body.account; 
-    let passwd  = req.body.passwd;
-    if(account === "jeff" && passwd === "testqq"){
-        req.isLoginedValid = true;
-    }
-    else {
-        req.isLoginedValid = false;
-    };
+// let isUserValid = (req,res,next)=>{
+//     let account = req.body.account; 
+//     let passwd  = req.body.passwd;
+//     if(account === "jeff" && passwd === "testqq"){
+//         req.isLoginedValid = true;
+//     }
+//     else {
+//         req.isLoginedValid = false;
+//     };
 
 
-    if(!req.isLoginedValid){
-        res.status(400).json({message:"帳號或密碼錯誤！"});
-        return;
-    };
+//     if(!req.isLoginedValid){
+//         res.status(400).json({message:"帳號或密碼錯誤！"});
+//         return;
+//     };
 
-    next();
-};
+//     next();
+// };
 
-let setUserInfo = (req,res,next)=>{
-    if(req.isLoginedValid){
-        req.session.userInfo = {
-            name : "大測試家" , 
-            age  : 18 ,
-            isLogined : true
-        };
-    }else{
-        req.session.userInfo = { isLogined: false };
-    };
+// let setUserInfo = (req,res,next)=>{
+//     if(req.isLoginedValid){
+//         req.session.userInfo = {
+//             name : "大測試家" , 
+//             age  : 18 ,
+//             isLogined : true
+//         };
+//     }else{
+//         req.session.userInfo = { isLogined: false };
+//     };
 
-    next();
-};
+//     next();
+// };
 
 
 let isUserLogined = (req,res,next)=>{
@@ -42,7 +42,7 @@ let isUserLogined = (req,res,next)=>{
 
 
 module.exports = {
-    isUserValid,
-    setUserInfo,
+    // isUserValid,
+    // setUserInfo,
     isUserLogined
 };

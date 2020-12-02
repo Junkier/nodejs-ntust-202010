@@ -3,7 +3,8 @@ const db       = require("./db");
 
 // 建立 schema
 let membersSchema = new mongoose.Schema({
-  // [Code Review]
+  "account" : String,
+  "passwd"  : String
   }, { collection: "members"}
 );
   

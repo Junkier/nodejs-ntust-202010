@@ -56,7 +56,21 @@
                         
                         <ul class="collapse list-unstyled" id="aboutMe">
                             <li>
-                                <a href="#"> Test </a>
+                                <a href="/about/us"> 關於我們 </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#setting" data-toggle="collapse" aria-expanded="false"  class="dropdown-toggle">
+                            <span class="icon-holder">
+                                <i class="fas fa-sliders-h"></i> </span>
+                            <span class="menu-title">設定</span>
+                        </a>
+                        
+                        <ul class="collapse list-unstyled" id="setting">
+                            <li>
+                                <a href="/logout"> 登出 </a>
                             </li>
                         </ul>
                     </li>
@@ -101,14 +115,14 @@
 
                         <div class="form-group col-md-3 mx-3">
                             <label class="col-form-label">主題</label>
-                            <input class="form-control" type="text"  />
+                            <input class="form-control" type="text"  id="subject"/>
                         </div>
 
                         <div class="form-group col-md-3 mx-3">
                             <label class="col-form-label" for="birthday">預定時間</label>
                             <div class="input-group" id="datetimepicker" data-target-input="nearest">
                                 <input type="text" class="form-control datetimepicker-input"
-                                    data-target="#datetimepicker" id="memBirthDay"
+                                    data-target="#datetimepicker" id="reservation-time"
                                     />
                                 <div class="input-group-append" data-target="#datetimepicker"
                                     data-toggle="datetimepicker">
@@ -122,13 +136,14 @@
                         <div class="form-group col-md-3 mx-3">
                             <label class="col-form-label">簡介 </label>
                             <input class="form-control" 
+                                id="brief"
                                 oninput="if(value.length>10)value=value.slice(0,10)" 
                                 type="text"  />
                         </div>
                         
                         <div class="form-group col-md-3 mx-3">
                             <label class="col-form-label">程度</label>
-                            <div id="de-level" style="font-size: 1.5rem;">
+                            <div id="level" style="font-size: 1.5rem;">
                                 <i index=0 class="far fa-bell bell-icon"></i>
                                 <i index=1 class="far fa-bell bell-icon"></i>
                                 <i index=2 class="far fa-bell bell-icon"></i>
@@ -145,7 +160,7 @@
 
                         <div class="form-group col-md-3 mx-3">
                             <label class="col-form-label">撰寫者</label>
-                            <select class="form-control" id="categories">
+                            <select class="form-control" id="author">
                                 <option>傑夫</option>
                                 <option>Leo</option>
                                 <option>小魚</option>
@@ -204,9 +219,9 @@
 
                     <div class="form-row d-flex justify-content-center">
                         <div class="form-group col-md-4 mx-3 my-4">
-                            <button type="button" style="width:5rem;" class="btn btn-primary mr-4" id="de-save-btn">儲存</button>
-                            <button type="button" style="width:5rem;" class="btn btn-info mr-4"    id="de-cancel-btn">取消</button>
-                            <button type="button" style="width:5rem;" class="btn btn-danger mr-4"  id="de-delete-btn">刪除</button>
+                            <button type="button" style="width:5rem;" class="btn btn-primary mr-4" id="save-btn">儲存</button>
+                            <button type="button" style="width:5rem;" class="btn btn-info mr-4"    id="cancel-btn">取消</button>
+                            <button type="button" style="width:5rem;" class="btn btn-danger mr-4"  id="delete-btn">刪除</button>
                         </div>
                     </div>
                     

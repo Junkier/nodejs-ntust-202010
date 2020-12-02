@@ -1,3 +1,8 @@
+$(function(){
+    init();
+});
+
+
 function uploadImageEvent(e){
 
     if(!$(this).hasClass("upload-image")) return;
@@ -136,17 +141,22 @@ function init(){
 
     //// Level signal
     var level = 0;
-    $("#de-level i").click(function(){
+    $("#level i").click(function(){
 
-        $("#de-level i").css({"font-weight":400});
+        $("#level i").css({"font-weight":400});
 
         var value = Number($(this).attr("index")) +1;
 
         if(level === value) return;
 
-        $("#de-level i").slice(0,value).css({"font-weight":600});
+        $("#level i").slice(0,value).css({"font-weight":600});
         level = value;
     });
+
+    // init level signal
+    var initLevel = Number($("#level").attr("value"));
+    $("#level i").slice(0,initLevel).css({"font-weight":600});
+    level = initLevel;
 
 
     //// Creating time 
@@ -160,15 +170,40 @@ function init(){
     // Displaying image
     $(".attachments input[type='file']").change(changeImageEvent);
 
+
+    //// Content
+    $("#content").val($("#content").attr("data"));
+
+
+    //// Author 
+    $("#author").val($("#author").attr("value"));
+
+
+    // Create or update
+    var toDoId = location.href.split("/").slice(-1)[0] ;
+
+    var isCreatedMode = toDoId === "create";
+
+
+    if(isCreatedMode){
+        // 取得最新的 to-do-id
+        axios.get("/to-do-list/the-newest-id")
+             .then(function(response){
+                var newToDoId = response.data.result;
+
+                $("#title-to-do-id").html(newToDoId+" 細項");
+                $("#to-do-id").val(newToDoId);
+             })
+             .catch(function(err){
+                console.log(err);
+             });
+
+        $("#delete-btn").prop({ disabled : true});
+
+        $(".attachments").addClass("disabled");
+        return;
+    };
+
+
+
 };
-
-
-
-
-$(function(){
-
-    init();
-
-});
-
-

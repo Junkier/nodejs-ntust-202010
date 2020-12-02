@@ -38,8 +38,7 @@ router.post("/",
 
 
         // 2. 照片落地到 application/images 資料夾
-
-        await fs.writeFileSync(`sample-4/application/images/${fileName}`,req.file.buffer);
+        await fs.writeFileSync(path.join(path.dirname(__dirname),`application/images/${fileName}`),req.file.buffer);
 
         req.fileName = fileName;
 

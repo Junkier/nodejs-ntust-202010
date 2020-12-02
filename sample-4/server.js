@@ -13,9 +13,12 @@ const redisClient = redis.createClient();
 const bodyParser   = require("body-parser");
 
 
-const dramas   = require("./router/dramas");
-const toDoList = require("./router/to-do-list");
-const images   = require("./router/images");
+const authRouter     = require("./router/auth");
+const dramasRouter   = require("./router/dramas");
+const toDoListRouter = require("./router/to-do-list");
+const imagesRouter   = require("./router/images");
+const aboutRouter    = require("./router/about");
+
 
 const utils    = require("./utils");
 
@@ -53,26 +56,27 @@ app.use(session({
 }))
 
 
-app.get("/login",(req,res)=>{
-    res.render("login.html");
-});
 
-
-app.post("/auth",
-  utils.isUserValid,
-  utils.setUserInfo,
-  (req,res,next)=>{
-     res.json({
-       message  : "ok.",
-       redirect : "/welcome"
-     });
-  }
-);
 
 app.get("/",(req,res)=>{
-  res.send("Hello World , going to login <a href='/login'>Login page</a>");
+  if(req.session.userInfo && req.session.userInfo.isLogined) res.redirect("/welcome");
+  else res.send("Hello World ! Please going to login <a href='/login'>Login page</a>");
 });
 
+
+
+app.get("/login",(req,res)=>{
+  res.render("login.html");
+});
+
+app.get("/logout",(req,res)=>{
+	req.session.destroy();
+	res.clearCookie("_ntust_tutorial_id");
+	res.redirect("/login");
+});
+
+
+app.use("/auth",authRouter);
 
 
 
@@ -80,12 +84,15 @@ app.use(utils.isUserLogined);
 
 
 
-app.use("/dramas",dramas);
-app.use("/to-do-list",toDoList);
-app.use("/images",images);
+app.use("/dramas",dramasRouter);
+app.use("/to-do-list",toDoListRouter);
+app.use("/images",imagesRouter);
+app.use("/about", aboutRouter);
 
 
-app.get("/welcome",
+
+
+app.get(["/","/welcome"],
   (req,res)=>{
     res.render("welcome.html",{templateName : req.session.userInfo.name});
   }
