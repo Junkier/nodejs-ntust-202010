@@ -74,7 +74,7 @@ function createTable(data){
 
     var dataTemplate = data.map(function(d,i){
         return `<tr>
-                    <th scope="row">${i+1}</th>
+                    <th scope="row">${d.to_do_id}</th>
                     <td>${d.subject}</td>
                     <td>${d.reserved_time}</td>
                     <td><a href="/to-do-list/detail/${d.to_do_id}">${d.brief}</a></td>

@@ -16,6 +16,7 @@ $(function(){
 function getPayload(){
     var subject         = $("#subject").val();
     var reserved_time   = $("#reservation-time").val();
+    var modified_time   = $("#de-created-time").text();
     var brief           = $("#brief").val();
 
     var level = $("#level").find("i")
@@ -32,11 +33,34 @@ function getPayload(){
         to_do_id,
         subject,
         reserved_time,
+        modified_time,
         brief,
         level,
         author,
         content,
     };
+};
+
+function checkPayloadFormat(payload){
+
+
+    var errMsg = "";
+
+    if(payload.subject.length===0)                   errMsg += "* 請輸入主題 !\n";
+    if(payload.reserved_time.length===0)             errMsg += "* 請選擇預定時間 !\n";
+    if(payload.brief.length===0)                     errMsg += "* 請輸入簡介 !\n";
+    if(payload.level === 0)                          errMsg += "* 重要程度 請至少選 1 !\n";
+    if(!payload.author || payload.author.length===0) errMsg += "* 請選擇撰寫者 !\n";
+
+    if(errMsg.length >0){
+        alert(errMsg);
+        return;
+    };
+
+
+    return true;
+
+     
 };
 
 
@@ -48,11 +72,15 @@ function updateToDoItem(){
 
     var mode = toDoId === "create" ? "create" : "edit";
 
-    
 
     if(mode === "create") payload["attachments"] = [ 
         null, null, null, null, null, null
     ];
+
+
+    var isValid = checkPayloadFormat(payload);
+
+    if(!isValid) return;
 
     axios.put("/to-do-list/detail/"+payload["to_do_id"] + "?mode="+mode , payload)
          .then(function(response){
@@ -87,4 +115,6 @@ function deleteToDoItem(to_do_id){
             };
          });
 };
+
+
 

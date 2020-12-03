@@ -1,5 +1,9 @@
 $(function(){
+
     init();
+
+    getImages();
+
 });
 
 
@@ -48,38 +52,61 @@ function changeImageEvent(e){
 
 };
 
-function init(){
+function getImages(){
+    var toDoId = $("#to-do-id").val();
+    axios.get("/images?to_do_id="+toDoId)
+         .then(function(response){
+             var data = response.data.result.attachments;
+             createImageBlock(data);
+         })
+         .catch(function(err){
+             console.log.apply(err);
+         });
+};
 
-    //// Sidebar Sliding
-    $("#sidebarCollapse").on("click", function () {
-        $("#sidebar, #content").toggleClass("active");
-        $(".collapse.in").toggleClass("in");
-        $("a[aria-expanded=true]").attr("aria-expanded", "false");
-    });
+function createImageBlock(data){
+
+    var attachments_part1 = data.slice(0,3);
+    var attachments_part2 = data.slice(3);
 
 
-    //// Init datetime picker icon.
-    $.fn.datetimepicker.Constructor.Default = $.extend({},
-        $.fn.datetimepicker.Constructor.Default,
-        { 
-            icons: { 
-                time: 'fas fa-clock',
-                date: 'fas fa-calendar',
-                up: 'fas fa-arrow-up',
-                down: 'fas fa-arrow-down',
-                previous: 'fas fa-arrow-circle-left',
-                next: 'fas fa-arrow-circle-right',
-                today: 'far fa-calendar-check-o',
-                clear: 'fas fa-trash',
-                close: 'far fa-times' 
-            },
-        }
-        
-    );
+    var imagesBlock1 = attachments_part1.map(function(ele,index){
+        return `<div class="form-group col-md-3 mx-3 ${ ele ? "text-center" : "upload-image"}" index=${index}>
+                    ${
+                        ele 
+                            ? `<a data-fancybox="gallery" href="/images/${ele}">
+                                <img src="/images/${ele}" class="img-thumbnail attach-images">
+                              </a>`
+                            : `<i class="fas fa-plus"></i><input type="file" class="d-none" accept="image/*">`
+                    }
+                </div>`;
+    }).join("");
 
-    $("#datetimepicker").datetimepicker({
-        format: "YYYY-MM-DD HH:mm",
-    });
+    var imagesBlock2 = attachments_part2.map(function(ele,index){
+        return `<div class="form-group col-md-3 mx-3 ${ ele ? "text-center" : "upload-image"}" index=${index+3}>
+                    ${
+                        ele 
+                            ? `<a data-fancybox="gallery" href="/images/${ele}">
+                                <img src="/images/${ele}" class="img-thumbnail attach-images">
+                              </a>`
+                            : `<i class="fas fa-plus"></i><input type="file" class="d-none" accept="image/*">`
+                    }
+                </div>`;
+    }).join("");
+
+
+
+    var imageBlocks = `<div class="form-group col-md-12 mx-3 d-flex ml-5">
+            ${imagesBlock1}
+        </div>
+        <div class="form-group col-md-12 mx-3 d-flex ml-5">
+            ${imagesBlock2}
+        </div>`;
+
+    
+    $("#attachments").append(imageBlocks);
+    $("#attachments").removeClass("d-none");
+
 
 
 
@@ -139,6 +166,51 @@ function init(){
     });
 
 
+    //// Attachments upload images
+    $(".attachments div.upload-image").click(uploadImageEvent);
+
+    
+    // Displaying image
+    $(".attachments input[type='file']").change(changeImageEvent);
+
+    
+};
+
+function init(){
+
+    //// Sidebar Sliding
+    $("#sidebarCollapse").on("click", function () {
+        $("#sidebar, #content").toggleClass("active");
+        $(".collapse.in").toggleClass("in");
+        $("a[aria-expanded=true]").attr("aria-expanded", "false");
+    });
+
+
+    //// Init datetime picker icon.
+    $.fn.datetimepicker.Constructor.Default = $.extend({},
+        $.fn.datetimepicker.Constructor.Default,
+        { 
+            icons: { 
+                time: 'fas fa-clock',
+                date: 'fas fa-calendar',
+                up: 'fas fa-arrow-up',
+                down: 'fas fa-arrow-down',
+                previous: 'fas fa-arrow-circle-left',
+                next: 'fas fa-arrow-circle-right',
+                today: 'far fa-calendar-check-o',
+                clear: 'fas fa-trash',
+                close: 'far fa-times' 
+            },
+        }
+        
+    );
+
+    $("#datetimepicker").datetimepicker({
+        format: "YYYY-MM-DD HH:mm",
+    });
+
+
+
     //// Level signal
     var level = 0;
     $("#level i").click(function(){
@@ -161,14 +233,6 @@ function init(){
 
     //// Creating time 
     $("#de-created-time").text(moment(new Date()).format("YYYY-MM-DD HH:mm:ss"));
-
-    
-    //// Attachments upload images
-    $(".attachments div.upload-image").click(uploadImageEvent);
-
-    
-    // Displaying image
-    $(".attachments input[type='file']").change(changeImageEvent);
 
 
     //// Content

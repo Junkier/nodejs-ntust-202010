@@ -24,6 +24,24 @@ let isFileExist = (req,res,next)=>{
 var router = express.Router();
 
 
+// 照片取得
+router.get("/",
+    (req,res)=>{
+        let to_do_id = req.query.to_do_id;
+        model.toDoList
+             .findOne({to_do_id},{to_do_id:1, attachments : 1})
+             .then(result=>{
+                res.json({result});
+             })
+             .catch(err=>{
+                console.error(err);
+                res.status(500).json({message:"Server internal fault."});
+             });
+
+    }
+);
+
+
 // 照片上傳
 router.post("/",
     multer.single("attachment"),
@@ -52,32 +70,14 @@ router.post("/",
         let to_do_id = req.query.to_do_id;
         let index    = req.query.index;
 
-        let ele = await model.toDoList.findOne({to_do_id},{to_do_id:1});
-
         // 5. 照片路徑更新至 mongoDB 
-        if(ele){
-            // edit mode
-            await model.toDoList.updateOne({
-                to_do_id,
-            },{$set:{
-                [`attachments.${index}`] : req.fileName
-            }});
-        }else{
-            // create mode
-            let attachments = new Array(6).fill(0).map(v=>null);
-            attachments[index] = req.fileName;
-            await model.toDoList.create({
-                "attachments" : attachments,
-                "to_do_id" : to_do_id,
-                "subject" : "",
-                "reserved_time" : "",
-                "modified_time" : "",
-                "brief" : "",
-                "level" : 0,
-                "author" : "",
-                "content" : ""
-            });
-        };
+        // edit mode
+        await model.toDoList.updateOne({
+            to_do_id,
+        },{$set:{
+            [`attachments.${index}`] : req.fileName
+        }});
+
     }
 );
 

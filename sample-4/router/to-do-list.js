@@ -3,6 +3,9 @@ const model   = require("../models");
 
 var router = express.Router();
 
+
+
+// to-do-list 清單頁面
 router.get("/page",
     (req,res)=>{
         res.render("to-do-list.html",{ 
@@ -11,8 +14,7 @@ router.get("/page",
     }
 );
 
-
-
+// to-do-list 清單資料
 router.get("/list",
     (req,res)=>{
         model.toDoList
@@ -28,33 +30,38 @@ router.get("/list",
 );
 
 
+// 新增  待辦事項 細節頁面 
 router.get("/detail/create",
-    async (req,res)=>{
+    (req,res)=>{
         res.render("to-do-detail.html",{
             templateName : req.session.userInfo.name,
-            attachments_part1 : [null,null,null],
-            attachments_part2 : [null,null,null]
         });
     }
 );
 
 
+// 編輯  待辦事項 細節頁面
 router.get("/detail/:to_do_id",
-    async (req,res)=>{
-        let data = await model.toDoList.findOne({to_do_id : req.params.to_do_id});
+    (req,res)=>{
+        model.toDoList
+             .findOne({to_do_id : req.params.to_do_id})
+             .then(data=>{
+                data.templateName  = req.session.userInfo.name;
+                data.to_do_id      = req.params.to_do_id ;
+        
+                res.render("to-do-detail.html",data);
+             })
+             .catch(err=>{
+                console.error(err);
+                res.status(500).json({message:"Server internal fault."});
+             });
 
-        data.templateName  = req.session.userInfo.name;
-        data.to_do_id      = req.params.to_do_id ;
-
-
-        // [Images]
-        data.attachments_part1 = data.attachments.slice(0,3);
-        data.attachments_part2 = data.attachments.slice(3);
-        res.render("to-do-detail.html",data);
+       
     }
 );
 
 
+//  新增/更新  該待辦事項
 router.put("/detail/:to_do_id",
     (req,res)=>{
         model.toDoList
@@ -74,7 +81,7 @@ router.put("/detail/:to_do_id",
 );
 
 
-
+// 刪除  該待辦事項
 router.delete("/detail/:to_do_id",
     (req,res)=>{
         model.toDoList
@@ -92,16 +99,23 @@ router.delete("/detail/:to_do_id",
 );  
 
 
-
+// 取得最新的 to_do_id (不開發)
 router.get("/the-newest-id",
-    async (req,res)=>{
-        let ele = await model.toDoList.findOne({},{to_do_id:1}).sort({to_do_id:-1});
-        let lastToDoId = ele.to_do_id;
-        let newToDoId = Number(lastToDoId) + 1;
-
-        req.session.caseInfo = {toDoId : newToDoId};
-
-        res.json({ result : newToDoId});
+    (req,res)=>{
+        model.toDoList
+             .findOne({},{to_do_id:1})
+             .sort({to_do_id:-1})
+             .then(ele=>{
+                let lastToDoId = ele.to_do_id;
+                let newToDoId = Number(lastToDoId) + 1;
+        
+                res.json({ result : newToDoId});
+             })
+             .catch(err=>{
+                console.error(err);
+                res.status(500).json({message:"Server internal fault."});
+             });
+       
     }
 );
 

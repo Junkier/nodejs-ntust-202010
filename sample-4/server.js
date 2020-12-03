@@ -23,8 +23,6 @@ const aboutRouter    = require("./router/about");
 const utils    = require("./utils");
 
 
-hbs.registerHelper("inc3",(value, options) => parseInt(value) + 3);
-
 
 // 設定模板引擎
 app.engine('html',hbs.__express);
@@ -79,9 +77,7 @@ app.get("/logout",(req,res)=>{
 app.use("/auth",authRouter);
 
 
-
 app.use(utils.isUserLogined);
-
 
 
 app.use("/dramas",dramasRouter);
