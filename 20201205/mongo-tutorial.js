@@ -81,3 +81,24 @@ db.getCollection('sample1').updateMany(
 db.getCollection('sample1').deleteOne({ "_id" : ObjectId("5fcb050cbe20d36d8d3024dc") })
 
 db.getCollection('sample1').deleteMany({ "category" : "政治" })
+
+
+
+//// 小試身手 #3
+// 1.
+// db.getCollection('tutorial-2').insertMany([{...},{...}])
+
+// 2. 
+// db.getCollection('tutorial-2').find({
+//     "score"    : { "$gte" : 8 },
+//     "category" : "政治"  
+//    } , {
+//       "name" : 1 ,
+//       "dramaId" : 1    
+//    })
+
+// 3.
+// db.getCollection('tutorial-2').updateMany({ "category" : "犯罪"} , { "$set" : { "remark" : "good!" } } )
+
+// 4. 
+// db.getCollection('tutorial-2').deleteMany({ "name" : { "$in"  : [ "QQQQ" , "SSS", "ABCD" ] }})
