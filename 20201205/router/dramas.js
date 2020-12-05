@@ -3,7 +3,7 @@ const fs      = require("fs");
 
 let router    = express.Router();
 
-const validator = require("../utlis/validator");
+const validator = require("../utils/validator");
 
 
 
