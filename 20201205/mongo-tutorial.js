@@ -48,6 +48,16 @@ db.getCollection('sample1').findOne({
     "score" : { "$gt" : 9.5 }
 })
 
+// 欄位選擇
+db.getCollection('sample1').find({
+    // "name" : "Keven"
+   "dramaId" : { "$exists" : true}
+}, {
+   //"name" : 1 , 
+   //"category" : 1 , 
+   "score"  : 1 
+})
+
 
 // update 
 // 無欄位 --> 新增欄位
@@ -65,4 +75,9 @@ db.getCollection('sample1').updateMany(
     { "$set" : { "name" : "testQQ" , "message" : 1234 }  }    
 )
 
+
+
 // delete
+db.getCollection('sample1').deleteOne({ "_id" : ObjectId("5fcb050cbe20d36d8d3024dc") })
+
+db.getCollection('sample1').deleteMany({ "category" : "政治" })
