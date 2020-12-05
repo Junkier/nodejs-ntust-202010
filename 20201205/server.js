@@ -94,4 +94,15 @@ app.listen(8088,function(){
 });
 
 
+const dramaModel = require("./models/dramas");
+
+dramaModel.find()
+		  .then(result=>{
+			  console.log(result);
+		  })
+		  .catch(err=>{
+			  console.log(err);
+		  });
+
+
 
