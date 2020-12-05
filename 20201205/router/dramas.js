@@ -5,7 +5,7 @@ let router    = express.Router();
 
 const validator = require("../utils/validator");
 
-
+const model   = require("../models");
 
 router.get("/page",(req,res)=>{
     res.render("dramas.html");
@@ -31,18 +31,33 @@ router.get("/page",(req,res)=>{
 router.get("/list",
     // validator.isTokenValidInHeaders,
     (req,res)=>{
+
+        let query =  req.query.type  === "全" ? {} : { "category" : req.query.type };
+
+        model.dramas
+             .find(query)
+             .then(result=>{
+                res.json( { result : result });
+             })
+             .catch(err=>{
+                console.log(err);
+                res.status(500).json({ message : "Server internal fault."});
+             });
+
     // router.get("/getDramaListData",(req,res)=>{
-        let data = fs.readFileSync("./models/sample2.json","utf8");
-        data = JSON.parse(data);
 
-        let type = req.query.type;
 
-        if(type === "全"){
-            res.json({ result:data });
-        }else{
-            let filteredData = data.filter(ele => ele["category"] === type);
-            res.json({ result : filteredData });
-        };
+        // let data = fs.readFileSync("./models/sample2.json","utf8");
+        // data = JSON.parse(data);
+
+        // let type = req.query.type;
+
+        // if(type === "全"){
+        //     res.json({ result:data });
+        // }else{
+        //     let filteredData = data.filter(ele => ele["category"] === type);
+        //     res.json({ result : filteredData });
+        // };
 
     }
 );
