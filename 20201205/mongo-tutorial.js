@@ -19,8 +19,9 @@ db.getCollection('sample1').insertOne({
     "_id"  : 1236
 })
 
-// find
 
+
+// find
 // category="政治" & name="紙牌屋"
 db.getCollection('sample1').find({ "category" : "政治" ,  "name" : "紙牌屋"  })
 
@@ -35,8 +36,24 @@ db.getCollection('sample1').find({
     "score"  : {  "$lt" : 8  }  
 })
 
+db.getCollection('sample1').find({ 
+    // "score"  : { "$gt" :9 }
+    "age"   : { $exists : false } ,
+    "score" : { "$gt" : 9.5 }
+})
+
+db.getCollection('sample1').findOne({ 
+    // "score"  : { "$gt" :9 }
+    "age"   : { $exists : false } ,
+    "score" : { "$gt" : 9.5 }
+})
+
 
 // update 
+// 無欄位 --> 新增欄位
+// 有欄位 --> 修改欄位值
+db.getCollection('sample1').updateOne( { "_id" : 1234} ,  { "$set" : { "abcd" : 123 } })
+db.getCollection('sample1').updateOne( { "_id" : 1234} ,  { "$set" : { "abcd123" : "This is a book" } })
 
 
 
