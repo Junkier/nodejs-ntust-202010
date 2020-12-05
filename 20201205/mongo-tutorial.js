@@ -55,6 +55,14 @@ db.getCollection('sample1').findOne({
 db.getCollection('sample1').updateOne( { "_id" : 1234} ,  { "$set" : { "abcd" : 123 } })
 db.getCollection('sample1').updateOne( { "_id" : 1234} ,  { "$set" : { "abcd123" : "This is a book" } })
 
+db.getCollection('sample1').updateOne( 
+    { "_id" : 1234 },  
+    { "$set" : { "abcd" : 5678 , "message" : "~~~~" , "scores" : [1,2,3,4,5] }  }    
+)
 
+db.getCollection('sample1').updateMany( 
+    { "category" : "犯罪" },  
+    { "$set" : { "name" : "testQQ" , "message" : 1234 }  }    
+)
 
 // delete
