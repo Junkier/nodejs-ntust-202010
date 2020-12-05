@@ -45,14 +45,20 @@ app.use(session({
 ////// 之後可存取 req.session 物件
 
 
-app.use("/about", validator.isUserLogined, aboutRouter);
-app.use("/dramas",validator.isUserLogined, dramasRouter);
+app.use("/about", 
+	// validator.isUserLogined, 
+	aboutRouter
+);
+app.use("/dramas",
+	// validator.isUserLogined, 
+	dramasRouter
+);
 app.use("/auth",authRouter);
 
 
 
 app.get("/",
-	validator.isUserLogined,
+	// validator.isUserLogined,
 	(req,res)=>{
 
 		console.log("FROM GET / !!!");
