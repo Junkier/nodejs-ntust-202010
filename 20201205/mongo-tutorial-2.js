@@ -6,9 +6,9 @@ const connConfig = "mongodb://localhost:27017/Tutorial";
 
 
 const conn = mongoose.createConnection(connConfig , {
-    poolSize: 5 , 
-    useNewUrlParser: true ,
-    useUnifiedTopology: true,
+    poolSize: 5 ,               // 連線池內的連線數
+    useNewUrlParser:    true,   // 使用新的 parser 解析 connConfig
+    useUnifiedTopology: true,   // 使用新的 節點發現 方法
 });
 
 
@@ -34,7 +34,6 @@ let dramaSchema = new mongoose.Schema({
 // 建立 model 物件 (和 collection 互動)
 let dramaModel = conn.model("Drama",dramaSchema);
 
-
   
 // 執行 mongoDB find 操作
 // dramaModel.find({ "category" : "政治"})
@@ -46,22 +45,41 @@ let dramaModel = conn.model("Drama",dramaSchema);
 //           });
 
 
-
-
-
 let sample1Schema = new mongoose.Schema({
     "name" : String , 
     "age"  : Number , 
     "message" : String
-}, { collection : "sample1"});
+}, { collection : "sample1" , versionKey : false});
 
 
 let sample1Model = conn.model("sample1",sample1Schema);
 
-sample1Model.find({ "name" : "Leo" })
+
+// 查詢
+sample1Model.find({ "name" : "Leo"})
             .then(result=>{
                 console.log(result);
             })
             .catch(err=>{
                 console.log(err);
             });
+
+
+
+// 新增
+sample1Model.create({
+        "name"   : "Keven",
+        "others" : 1234567,
+        "scores" : [100,95,80]
+        // "name" : "Jenny",
+        // "age"  : 25,
+        // "message" : "HiHi~~~~~"
+    })
+    .then(result=>{
+        console.log(result);
+    })
+    .catch(err=>{
+        console.log(err);
+    });
+
+
