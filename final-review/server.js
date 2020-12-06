@@ -4,6 +4,7 @@ const app = express();
 const hbs = require("hbs");
 const path = require("path");
 
+const bodyParser = require("body-parser");
 
 const toDoListRouter = require("./router/to-do-list");
 
@@ -13,6 +14,22 @@ app.engine("html",hbs.__express);
 app.set("views",  path.join( __dirname , "application" , "views"));
 
 app.use(express.static( path.join(__dirname , "application" )));
+
+
+// Setting body-parser
+
+// application/json 
+app.use( bodyParser.json() );
+
+
+// application/x-form-urlencoded
+app.use( bodyParser.urlencoded( {
+		extended : false ,
+		limit : "1mb",
+		parameterLimit : '10000'
+}));
+//// req.body from this
+
 
 //// Model 部分建立完 , 再開啟即可使用
 // const dramasRouter   = require("./router/dramas");
