@@ -30,6 +30,11 @@ router.get("/list",(req,res)=>{
          });
 });
 
+//  to-do-list 新增 待辦事項 細節頁面
+router.get("/detail/create",(req,res)=>{
+   res.render("to-do-detail.html");
+});
+
 
 
 //  to-do-list 編輯 待辦事項 細節頁面   
@@ -63,7 +68,11 @@ router.put("/detail/:to_do_id",(req,res)=>{
     let toDoId  = req.params.to_do_id;
 
     model.toDoList
-         .updateOne({ "to_do_id" : toDoId } , { "$set" : payload})
+         .updateOne(
+            { "to_do_id" : toDoId  } , 
+            { "$set"     : payload } , 
+            { "upsert"   : true }     // update or insert  
+         )
          .then(result=>{
 
             res.json({ message : "ok."});
@@ -75,5 +84,27 @@ router.put("/detail/:to_do_id",(req,res)=>{
          });
 
 });
+
+
+
+// 取得最新的 to_do_id (不開發)
+router.get("/the-newest-id",
+    (req,res)=>{
+        model.toDoList
+             .findOne({},{to_do_id:1})
+             .sort({to_do_id:-1})
+             .then(ele=>{
+                let lastToDoId = ele.to_do_id;
+                let newToDoId = Number(lastToDoId) + 1;
+        
+                res.json({ result : newToDoId});
+             })
+             .catch(err=>{
+                console.error(err);
+                res.status(500).json({message:"Server internal fault."});
+             });
+       
+    }
+);
 
 module.exports = router;

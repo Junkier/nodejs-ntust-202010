@@ -16,4 +16,7 @@ conn.on("error",()=>{
     console.log("Connecting to MongoDB get error.");
 });
 
-module.exports = conn;
+// module.exports = conn;
+module.exports = {
+    conn1 , conn2 
+};
