@@ -40,8 +40,6 @@ router.get("/list",
 router.post("/detail",(req,res)=>{
     let payload = req.body;
 
-
-    
     
     // 1. Getting the newest dramaId 
     model.dramas
@@ -74,6 +72,27 @@ router.post("/detail",(req,res)=>{
     //         console.log(err);
     //         res.status(500).json({ message : "Server internal fault."});
     //      });
+});
+
+
+// PUT /dramas/detail/:dramaId
+router.put("/detail/:dramaId",(req,res)=>{
+    let dramaId = req.params.dramaId;
+    let payload = req.body;   // { name : "..." , score : "..." }
+
+    model.dramas 
+         .updateOne(
+             {"dramaId" : dramaId },
+             { "$set"   : { name : payload.name , score : payload.score } }
+         )
+         .then(result=>{
+             console.log(result);
+            res.json({message:"ok." });
+         })
+         .catch(err=>{
+            console.log(err);
+            res.status(500).json({ message : "Server internal fault."});
+         });
 });
 
 
