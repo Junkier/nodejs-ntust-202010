@@ -12,24 +12,10 @@ router.get("/page",(req,res)=>{
 });
 
 
-// router.use(
-//     validator.isTokenValidInHeaders,
-//     // (req,res,next) => {
-//     //     console.log("router.use middleware 1 !!!");
-//     //     next();
-//     // },
-//     // (req,res,next) => {
-//     //     console.log(req.query);
-//     //     next();
-//     // }
-// );
-
-
 
 
 // GET /dramas/list
 router.get("/list",
-    // validator.isTokenValidInHeaders,
     (req,res)=>{
 
         let query =  req.query.type  === "全" ? {} : { "category" : req.query.type };
@@ -44,20 +30,6 @@ router.get("/list",
                 res.status(500).json({ message : "Server internal fault."});
              });
 
-    // router.get("/getDramaListData",(req,res)=>{
-
-
-        // let data = fs.readFileSync("./models/sample2.json","utf8");
-        // data = JSON.parse(data);
-
-        // let type = req.query.type;
-
-        // if(type === "全"){
-        //     res.json({ result:data });
-        // }else{
-        //     let filteredData = data.filter(ele => ele["category"] === type);
-        //     res.json({ result : filteredData });
-        // };
 
     }
 );
@@ -68,21 +40,45 @@ router.get("/list",
 router.post("/detail",(req,res)=>{
     let payload = req.body;
 
+
+    
+    
+    // 1. Getting the newest dramaId 
     model.dramas
-         .create(payload)
+         .findOne()
+        //  .sort({ dramaId : 1 })  // dramaId little -> big
+         .sort({ dramaId : -1 })    // dramaId big    -> little
+         .then(ele=>{
+            console.log(ele);
+            let newDramaId      = Number(ele["dramaId"]) + 1 ;
+            payload["dramaId"]  = String(newDramaId);
+
+            // 2. Inserting payload (create)
+            return model.dramas.create(payload);
+         })
          .then(result=>{
-            res.json({message:"ok." , result : result });
+            res.json({message:"ok." });
          })
          .catch(err=>{
             console.log(err);
             res.status(500).json({ message : "Server internal fault."});
          });
+
+
+    // model.dramas
+    //      .create(payload)
+    //      .then(result=>{
+    //         res.json({message:"ok." , result : result });
+    //      })
+    //      .catch(err=>{
+    //         console.log(err);
+    //         res.status(500).json({ message : "Server internal fault."});
+    //      });
 });
 
 
 
 // POST /dramas/data
-// router.post("/createNewDramaData",(req,res)=>{
 router.post("/data",
     // validator.isTokenValidInHeaders,
     (req,res)=>{
