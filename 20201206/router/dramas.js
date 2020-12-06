@@ -3,15 +3,12 @@ const fs      = require("fs");
 
 let router    = express.Router();
 
-const validator = require("../utils/validator");
-
 const model   = require("../models");
+
 
 router.get("/page",(req,res)=>{
     res.render("dramas.html");
 });
-
-
 
 
 // GET /dramas/list

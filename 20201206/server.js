@@ -6,6 +6,10 @@ const path   = require("path");
 
 const bodyParser   = require("body-parser");
 const session      = require("express-session");
+const redis        = require("redis");
+const redisStore   = require("connect-redis")(session);
+const redisClient  = redis.createClient();
+
 
 
 const dramasRouter = require("./router/dramas");
@@ -13,7 +17,6 @@ const aboutRouter  = require("./router/about");
 const authRouter   = require("./router/auth");
 
 const validator    = require("./utils/validator");
-
 
 // 設定模板引擎
 app.engine('html',hbs.__express);
@@ -35,6 +38,7 @@ app.use( bodyParser.urlencoded( {
 
 
 app.use(session({
+	store  : new redisStore({ client: redisClient }), 
 	secret : "c90dis90#" ,	     // 加密 session_id (salt)
 	resave : true,               // 不論修改 , 回存到 stores 
 	saveUninitialized : false,   // 初始化的　session data , 使否存到 stores
@@ -49,10 +53,12 @@ app.use("/about",
 	// validator.isUserLogined, 
 	aboutRouter
 );
+
 app.use("/dramas",
-	// validator.isUserLogined, 
+	validator.isUserLogined, 
 	dramasRouter
 );
+
 app.use("/auth",authRouter);
 
 

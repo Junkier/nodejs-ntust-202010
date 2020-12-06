@@ -1,0 +1,6 @@
+keys *
+set name jeff
+set age 18
+set testqq123  abcd 
+
+ get  "sess:NOP81OAUgoJwSWVsIRUp6j0S5kKNXUFr"
