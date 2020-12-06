@@ -86,7 +86,7 @@ router.put("/detail/:dramaId",(req,res)=>{
              { "$set"   : { name : payload.name , score : payload.score } }
          )
          .then(result=>{
-             console.log(result);
+            console.log(result);
             res.json({message:"ok." });
          })
          .catch(err=>{
@@ -95,6 +95,20 @@ router.put("/detail/:dramaId",(req,res)=>{
          });
 });
 
+
+// DELETE /dramas/detail/:dramaId
+router.delete("/detail/:dramaId",(req,res)=>{
+    model.dramas
+         .deleteOne({ "dramaId" : req.params.dramaId })
+         .then(result=>{
+            console.log(result);
+            res.json({message:"ok." });
+        })
+        .catch(err=>{
+           console.log(err);
+           res.status(500).json({ message : "Server internal fault."});
+        });
+});
 
 
 // POST /dramas/data
