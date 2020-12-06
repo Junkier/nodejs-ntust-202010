@@ -16,7 +16,7 @@ const bodyParser   = require("body-parser");
 const authRouter     = require("./router/auth");
 const dramasRouter   = require("./router/dramas");
 const toDoListRouter = require("./router/to-do-list");
-// const imagesRouter   = require("./router/images");
+const imagesRouter   = require("./router/images");
 const aboutRouter    = require("./router/about");
 
 
@@ -82,7 +82,7 @@ app.use(utils.isUserLogined);
 
 app.use("/dramas",dramasRouter);
 app.use("/to-do-list",toDoListRouter);
-// app.use("/images",imagesRouter);
+app.use("/images",imagesRouter);
 app.use("/about", aboutRouter);
 
 
