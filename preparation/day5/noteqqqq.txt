@@ -1,0 +1,112 @@
+1. review-last-week + copy 1218 code
+2. 後端寫 POST /dramas/data
+    - review 不管 dramaId
+    - 調整 dramaId 
+3. 講解 API 圖圖1 + devTools 帶看
+4. 回家試身手3 介紹
+    - package.json & npm install & node_modules 操作教學
+    - swagger.io 待看
+    - 丟丟 POSTman key-words
+
+============================== [Controllers GOGOGO !!!]
+1. 介紹 controller
+     - router 
+     - middleware 
+
+2. Middleware 實作 #1 -  參數檢查
+    1) 基礎實作   M1 ~ M2 
+    // {{ practice 7min }}
+
+    2) next
+    3) req.test
+    // {{ practice 7min }}
+
+    4) name_ 參數檢查
+    // {{ practice 7min }}
+
+    5) GET /dramas/list 參數檢查
+      - M1: type 存在?
+      - M2: type 正確？
+      - M3: 主要處理邏輯 
+    // {{ practice 10min }}
+
+3. Middleware 實作 #2 - API 保護
+ 1) API 保護  (W2 ,匿名 Middleware)
+        - 檢查 token 是否存在
+        - 檢查 token 是否有效
+     {{ practice 7min }}
+
+ 2) 圖圖2 Middleware ~
+
+ 3) API 保護  (W3 , validator.js Middleware)
+      - GET /list 
+      - POST /data
+      [Front-end]
+      - status code 2XX / 3XX --> then ;  4XX / 5XX --> catch 
+      - error.responseJSON.message
+      - headers 
+     {{ practice 7min }}
+
+4. 回顧 server.js
+
+5. 圖圖3 Controller : router --- API --- middleware
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+[Afternoon]
+1. http(s) protocol
+2. cookie & session 
+3. sample2 preparation 
+    - demo answer.js 
+    - 複製 /views + login.js + s.after.js
+    - 敘述 job
+      1. GET /login 頁面
+      2. POST /auth 驗證
+      3. GET /logout 登出 
+    {{ practice 7min }}
+
+    1) GET /login + router.auth + POST /auth
+    {{ practice 7min }}
+
+    2) isAccountAndPasswdExist & isUserValid
+    {{ practice 7min }}
+
+    3) error fitst
+    {{ practice 3min }}
+
+    4.1) install express-session 
+    4.2) setUserInfo
+    4.3) GET / 看 req.session
+    {{ practice 7min }}
+
+    5) isUserLogined
+    {{ practice 7min }}
+
+    6) isUserLogined 改用 err first 寫法
+    7) session store 概念
+
+    10) 切出去成 validator.isUserLogined
+    11) GET /logout
+    {{ practice 7min }}
+
+    12) Recap + session.userInfo.name 
+
+    4. 講解 HW4
+//////////////////////////// done.
+
+    下禮拜 GOGOGO !!!
+    8) 安裝 redis 
+    {{ practice 7min }}
+
+    9.1) redis + connect-redis
+    9.2) redisClient
+    9.3) store
+    {{ practice 7min }}
+
+==============================
+
+
+
+N. 回家試身手4 介紹 
+    - demo node server.js
+    - 帶到 JWT QQ
+
