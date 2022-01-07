@@ -1,0 +1,13 @@
+# 查看所有 key 
+keys *
+
+# 設定 key-value pair
+set name jeff
+set age 18
+set testqq123  abcd 
+
+# 取得特定的 key-value pair
+get "sess:NOP81OAUgoJwSWVsIRUp6j0S5kKNXUFr"
+
+# 刪除 key-value pair
+del "sess:NOP81OAUgoJwSWVsIRUp6j0S5kKNXUFr"

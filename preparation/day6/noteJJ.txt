@@ -1,0 +1,121 @@
+1. Review last Days 
+2. Review HW 
+3. CP 2021_1225
+4. Demo sample2/ctrl/answers.js
+5. Update body-parser 
+6. 修改 GET/
+    - err first
+    - redirect 
+    - front-end --> res.redirect 
+7. drama 追加 isUserLogined
+8. about 移成 router , 追加 isUserLogined
+9. GET /logout
+    - 解釋 session.config 
+    - 解釋 cookies & session 
+    - 解釋 store & store 消失事件
+10. 安裝 redis
+    - MAC GOGO !!!
+    - Windows GOGO !!!
+    - npm install redis@v3 connect-redis
+    - Session 外存 GOGO !!!
+    - 查看 session 的 Middleware 
+11. 透過 redis-cli 玩玩 redis 
+===============================================================================
+[Models GOGOGO !!!]
+1. 介紹 DB 
+    - SQL ~ 1970 年代即有
+    - NoSQL ~ 1998 觀念就有哩
+    - mongoDB ~ 2007
+2. SQL / NoSQL 
+3. MongoDB 介紹
+    - mongo-tutorial
+4. MongoDB 教學
+   ## 新增
+   # insertOne 
+        1) {name : "jeff" , age : 18}
+        2) 隨意亂塞 --> schemaless 
+      {{ practice 7min }}
+
+   # 小觀念
+        1) find . Primary key --> _id 
+   # insertOne 
+        1) 影集資料塞塞 sample2.json 塞入 dramas
+      {{ practice 7min }}
+
+
+  備課 2.0 從這邊開始！！！！
+
+   ## 查詢
+        1) find 
+            - .find(query , field)
+            - { f : { $exists : bool}}
+            - { f : { $gt : data }}
+        {{ practice 7min }}
+
+        2) fineOne
+
+   ## 修改
+        1) updateOne  -- .updateOne(query,{ $set : {data}})
+        2) updateMany
+        {{ practice 7min }}
+
+   ## 刪除
+        1) deleteOne 
+        2) deleteMany
+        {{ practice 7min }}
+
+
+   ## 小試身手 #3 + 午休
+        {{ practice 7min }}
+
+        1) 將 sample3.json 打入 tutorial-2 的 collection 
+             - insertMany([...])
+        2) 找出 score >= 8 , 類型為政治 的影集資料 , 僅顯示名稱 (name) & dramaId
+             - find({ "score" : { $gte : 8.0 } , "category" : "政治"} , { "name" :1 , "dramaId" : 1 , "_id" : 0})
+        3) 將 category 為 犯罪 的 影集資料 , 新增欄位為 remark ,  值為 "good!"
+             - updateMany({ "category" : "犯罪"} , { $set : { "remark" : "good!"} })
+        4) 刪除 name 為 QQQ , SSS , ABCD 的影集資料 (dirty data)
+             - .deleteMany({ "name" : { $in :  [ "QQQQ" , "SSS" , "ABCD" ] } } )
+
+        {{ practice 7min }}
+
+
+   ## download sample3 && node server.js 看結果
+        {{ practice 3min  }}
+
+
+ 5. mongoose 教學  // [圖圖5] ?
+        1) 安裝
+        2) 程式架構
+        3) /models/db  + require on server.js
+        // {{ practice 7min  }}
+
+        4) /models/dramas + require 2.0 on server.js 
+        {{ practice 7min }}
+
+        5) 說明 schema & model 概念
+        6) 建立 index.js & GET /dramas/test 看結果
+        {{ practice 7min }}
+
+        7) GET /dramas/list 
+        {{ practice 3min }}
+===============================================================================
+
+        8) POST /dramas/detail + 取得 最新 dramaId 問題
+        {{ practice 10min }}
+
+        [ Day6 done.]
+        9) PUT /dramas/detail/:dramId + 瀏覽器測試  
+        {{ practice 7min }}
+
+        10) DELETE /dramas/detail/:dramId + 瀏覽器測試  
+        {{ practice 7min }}
+
+
+!!! 補充 !!!
+    - [MongoDB] 追加 members 
+    - [Mongoose] 追加 members model 
+    - auth -> isUserValid 改成 .find MongoDB 會員檢查～ 
+
+
+
