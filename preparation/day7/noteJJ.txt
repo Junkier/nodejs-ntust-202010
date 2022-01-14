@@ -1,0 +1,54 @@
+1. recap last week 
+2. Demo today.morning (sample-3-models)
+3. 整理 Code
+    - copy 0108
+    - rm application && cp sample-3-models/application 
+    - 大刀砍掉 router/dramas.ctrl.js 裡東西的
+    - rm 註解ＱＱ
+4. 建立 mongo-tutorial2.js
+    - -1) tutorial-2 -> dramas-table
+    - 0) 建立連線 / 建立 Schema_&_Model / 透過 Model 操作 DB 
+    - 1) 建立連線 -> MongoDB is connected
+    // {{ practice 7min  }}
+
+    - 2) 建立 Schema_&_Model -> dramaModel.find()
+    // {{ practice 7min  }}
+
+    - 3) 解釋 Schema / Model 概念 (圖圖)
+    - 4) 改寫成 async / await + .find 條件
+    // {{ practice 7min  }}
+
+    - 5) 2nd Models 
+     - Schema / Model / createMain2
+     - 沒有在 Schema 上的 , 無法順利 create
+     - findMain2 一起來
+     - 一個 collection , 對應到 一個 Model
+    // {{ practice 10min  }}
+
+5. 放入到 models dir 裡
+     1) /models/db  + require on server.js
+     // {{ practice 7min  }}
+
+     2) /models/dramas + require 2.0 on server.js 
+     {{ practice 7min }}
+
+     3) 建立 index.js  & GET /dramas/list 
+     {{ practice 7min }}
+
+     4) POST /dramas/detail + 取得 最新 dramaId 問題
+     {{ practice 10min }}
+
+     5) PUT /dramas/detail/:dramId + 瀏覽器測試  
+     {{ practice 7min }}
+
+     6) DELETE /dramas/detail/:dramId + 瀏覽器測試  
+     {{ practice 7min }}
+
+6. 講解 to-do-list 
+  1) demo sample-4-answer
+  2) 講解流程
+  2) 完成 POST /auth  , GET /to-do-list/list 即可
+  3) 其餘解說 , 程式可參考 sample-4-answer 
+
+final. recap + 問卷
+
